@@ -27,7 +27,7 @@ public class FrmPatientList extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Patient List");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/patient.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Sick_24px.png"))); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
