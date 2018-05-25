@@ -363,15 +363,16 @@ public class FrmNewPatient extends javax.swing.JDialog {
 //        pa.setVillage(this.txtVillage.getText());
 //        pa.setDistrict(this.cmbDistrict.getSelectedItem().toString());
 //        pa.setProvince(this.cmbProvince.getSelectedItem().toString());
-        try {
-            dbm.insert(pa);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FrmNewPatient.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmNewPatient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.setVisible(false);
-        this.dispose();
+//====================================
+//        try {
+//            dbm.insert(pa);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(FrmNewPatient.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FrmNewPatient.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        this.setVisible(false);
+//        this.dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
