@@ -251,12 +251,22 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMProvinceInfo.setText("ແຂວງ");
         btnSMProvinceInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
         btnSMProvinceInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMProvinceInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMProvinceInfoActionPerformed(evt);
+            }
+        });
         jTaskPaneGroup6.getContentPane().add(btnSMProvinceInfo);
 
         btnSMDisttrictInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/District.png"))); // NOI18N
         btnSMDisttrictInfo.setText("ເມືອງ");
         btnSMDisttrictInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
         btnSMDisttrictInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMDisttrictInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMDisttrictInfoActionPerformed(evt);
+            }
+        });
         jTaskPaneGroup6.getContentPane().add(btnSMDisttrictInfo);
 
         jTaskPane1.add(jTaskPaneGroup6);
@@ -337,6 +347,18 @@ public class FrmMain extends javax.swing.JFrame {
         DeskTopControl.add(frmHospitalInfo);
         frmHospitalInfo.setVisible(true); 
     }//GEN-LAST:event_btnSMHospitalInfoActionPerformed
+
+    private void btnSMDisttrictInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDisttrictInfoActionPerformed
+      FrmDistricts DistrictsObject = new FrmDistricts();
+        DeskTopControl.add(DistrictsObject);
+        DistrictsObject.setVisible(true);
+    }//GEN-LAST:event_btnSMDisttrictInfoActionPerformed
+
+    private void btnSMProvinceInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMProvinceInfoActionPerformed
+       FrmProvinces ProvinceObject = new FrmProvinces();
+        DeskTopControl.add(ProvinceObject);
+        ProvinceObject.setVisible(true);
+    }//GEN-LAST:event_btnSMProvinceInfoActionPerformed
 
     /**
      * @param args the command line arguments
