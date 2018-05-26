@@ -6,11 +6,8 @@
 package com.mlk.views;
 
 import com.mlk.controllers.DatabaseManager;
-import com.mlk.models.DBConfiguration;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import javax.swing.JOptionPane;
+import com.mlk.controllers.DBConfiguration;
+import com.mlk.utils.Util;
 
 public class FrmSettingDB extends javax.swing.JDialog {
     DatabaseManager dm = new DatabaseManager();
@@ -165,21 +162,21 @@ public class FrmSettingDB extends javax.swing.JDialog {
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
         DBConfiguration df = new DBConfiguration(txtServerName.getText().trim(),txtDatabaseName.getText().trim(),txtUserName.getText().trim(),txtPassword.getText().trim());
-        if(dm.testConnection(df)){
-            dm.infoMsg("Successful");
+        if(df.testConnection()){
+            Util.infoMsg("Successful");
         }else{
-            dm.waringMsg("Connect Failed");
+            Util.waringMsg("Connect Failed");
         }
     }//GEN-LAST:event_btnTestActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         DBConfiguration df = new DBConfiguration(txtServerName.getText().trim(),txtDatabaseName.getText().trim(),txtUserName.getText().trim(),txtPassword.getText().trim());
-        dm.saveConnection(df);
+        df.saveConnection();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
         DBConfiguration df=new DBConfiguration();
-        dm.readConnection(df);
+        df.readConnection();
         txtServerName.setText(df.getServerName());
         txtDatabaseName.setText(df.getDatabaseName());
         txtUserName.setText(df.getUserName());

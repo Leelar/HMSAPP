@@ -1,10 +1,7 @@
 package com.mlk.controllers;
 
-import com.mlk.models.DBConfiguration;
-import com.mlk.models.Patient;
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -51,59 +48,6 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         return null;
-    }
-    public boolean testConnection(DBConfiguration df) {
-        try {
-            String url = "jdbc:sqlserver://" + df.getServerName() + ";DatabaseName=" + df.getDatabaseName() + "";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection c = DriverManager.getConnection(url, df.getUserName(), df.getPassword());
-            if (c != null) {
-                return true;
-            }
-        } catch (Exception e) {
-        }
-        return false;
-    }
-    public boolean saveConnection(DBConfiguration df) {
-        try {
-            Connection c = getAccessDB();
-            String sql = "update Tbl_Datasource set ServerName=?,DatabaseName=?,UserName=?,Password=? where ID=?";
-            PreparedStatement p = c.prepareStatement(sql);
-            p.setString(1, df.getServerName());
-            p.setString(2, df.getDatabaseName());
-            p.setString(3, df.getUserName());
-            p.setString(4, df.getPassword());
-            p.setInt(5, 1001);
-            if(p.executeUpdate()!=-1){
-                infoMsg("Successful");
-            }else{
-                waringMsg("Failed");
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-    public void readConnection(DBConfiguration df){
-        try {
-            Connection c = getAccessDB();
-            String sql = "Select * from Tbl_Datasource where ID=1001";
-            ResultSet rs = c.createStatement().executeQuery(sql);
-            if(rs.next()){
-                df.setServerName(rs.getString("ServerName"));
-                df.setDatabaseName(rs.getString("DatabaseName"));
-                df.setUserName(rs.getString("UserName"));
-                df.setPassword(rs.getString("Password"));
-            }
-        } catch (Exception e) {
-        }
-    }
-    public void infoMsg(String info){
-        JOptionPane.showMessageDialog(null, info,"Info message",JOptionPane.INFORMATION_MESSAGE);
-    }
-    public void waringMsg(String warning){
-        JOptionPane.showMessageDialog(null, warning,"Warning message",JOptionPane.WARNING_MESSAGE);
     }
 //    public void insert(Patient pa) throws ClassNotFoundException, SQLException {
 //        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
