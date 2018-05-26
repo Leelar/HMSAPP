@@ -1,57 +1,72 @@
 package com.mlk.controllers;
 
-import com.mlk.models.Patient;
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class DatabaseManager {
 
-    String db_connect_string = "jdbc:sqlserver://KOR-PC:1433;databaseName=hmsdb;selectMethod=cursor";
-    String db_userid = "sa";
-    String db_password = "kor";
-    Connection conn = null;
-
     public DatabaseManager() {
     }
+    public static Connection getConnection() {
+        try {
+            String serverName = "";
+            String dbName = "";
+            String userName = "";
+            String password = "";
+            String url;
+            String sql;
+            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\HMS/Datasoure.accdb");
+            sql = "SELECT * FROM tbl_Datasoure where ID=1001";
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+            if (rs.next()) {
+                serverName = "jdbc:sqlserver://" + rs.getString("Servername");
+                dbName = rs.getString("DatabaseName");
+                userName = rs.getString("UserName");
+                password = rs.getString("Password");
+            }
+            url = serverName + ";" + "DatabaseName=" + dbName;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection c = DriverManager.getConnection(url, userName, password);
+            return c;
 
-//    public String getPassword(String domain, String username) throws SQLException, ClassNotFoundException {
+        } catch (Exception e) {
+            // e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+            System.exit(0);
+        }
+        return null;
+    }
+    public static Connection getAccessDB() {
+        try {
+            String url = "jdbc:ucanaccess://C:\\HMS/SQLDatasourse.accdb";
+            Connection c = DriverManager.getConnection(url);
+            return c;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+//    public void insert(Patient pa) throws ClassNotFoundException, SQLException {
 //        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //        conn = DriverManager.getConnection(db_connect_string, db_userid, db_password);
-//        String pw = null;
-//        Statement statement = conn.createStatement();
-//        String queryString = "select * from " + domain + " where username = '" + username + "';";
-//        ResultSet rs = statement.executeQuery(queryString);
-//        while (rs.next()) {
-//            pw = rs.getString(3).replaceAll(" ", "");
+//        if (conn != null) {
+//            System.out.println("Succesfull!");
+//            String queryString = "INSERT INTO Patient (code, name, surname, gender) "
+//                    + "VALUES(?,?, ?,?)";
+//            PreparedStatement preparedStmt = conn.prepareStatement(queryString);
+//            preparedStmt.setString(1, pa.getCode());
+//            preparedStmt.setString(2, pa.getName());
+//            preparedStmt.setString(3, pa.getSurname());
+//            preparedStmt.setString(4, pa.getGender());
+//            preparedStmt.execute();
+//            conn.close();
+//        } else {
+//            System.out.println("Failed");
 //        }
-//        return pw;
 //    }
-    public void insert(Patient pa) throws ClassNotFoundException, SQLException {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        conn = DriverManager.getConnection(db_connect_string, db_userid, db_password);
-        if (conn != null) {
-            System.out.println("Succesfull!");
-            String queryString = "INSERT INTO Patient (code, name, surname, gender) "
-                    + "VALUES(?,?, ?,?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(queryString);
-            preparedStmt.setString(1, pa.getCode());
-            preparedStmt.setString(2, pa.getName());
-            preparedStmt.setString(3, pa.getSurname());
-            preparedStmt.setString(4, pa.getGender());
-            preparedStmt.execute();
-            conn.close();
-        } else {
-            System.out.println("Failed");
-        }
-    }
 
 //   public Exam createExamObj(String eid) throws SQLException, ClassNotFoundException, ParseException
 //   {
