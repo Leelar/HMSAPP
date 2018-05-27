@@ -47,6 +47,7 @@ public class FrmNewDistricts extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        setResizable(false);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
         jLabel4.setText("Add new District");
@@ -222,6 +223,7 @@ public class FrmNewDistricts extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

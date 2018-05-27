@@ -217,7 +217,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         jTaskPane1.add(jTaskPaneGroup2);
 
-        jTaskPaneGroup6.setExpanded(false);
         jTaskPaneGroup6.setTitle("ຕັ້ງຄ່າລະບົບ");
         jTaskPaneGroup6.setFont(new java.awt.Font("Saysettha OT", 1, 14)); // NOI18N
 
@@ -355,15 +354,25 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSMHospitalInfoActionPerformed
 
     private void btnSMDisttrictInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDisttrictInfoActionPerformed
-      FrmDistricts DistrictsObject = new FrmDistricts();
-        DeskTopControl.add(DistrictsObject);
-        DistrictsObject.setVisible(true);
+      FrmDistricts districtsObject = new FrmDistricts();
+        DeskTopControl.add(districtsObject);
+        districtsObject.setVisible(true);
+        try {
+          districtsObject.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMDisttrictInfoActionPerformed
 
     private void btnSMProvinceInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMProvinceInfoActionPerformed
-       FrmProvinces ProvinceObject = new FrmProvinces();
-        DeskTopControl.add(ProvinceObject);
-        ProvinceObject.setVisible(true);
+       FrmProvinces provinceObj = new FrmProvinces();
+        DeskTopControl.add(provinceObj);
+        provinceObj.setVisible(true);
+        try {
+          provinceObj.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMProvinceInfoActionPerformed
 
     /**

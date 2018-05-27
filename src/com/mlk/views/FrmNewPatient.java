@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mlk.views;
 
 import com.mlk.controllers.DatabaseManager;
@@ -12,11 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- *
- * @author Programming
- */
 public class FrmNewPatient extends javax.swing.JDialog {
 
     private DatabaseManager dbm = new DatabaseManager();
