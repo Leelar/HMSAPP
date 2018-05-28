@@ -1,6 +1,7 @@
 
 package com.mlk.views;
 
+import com.mlk.controllers.JTableColumnAutoResize;
 import java.awt.Font;
 
 public class FrmPatientList extends javax.swing.JInternalFrame {
@@ -8,6 +9,7 @@ public class FrmPatientList extends javax.swing.JInternalFrame {
     public FrmPatientList() {
         initComponents();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.PLAIN,12));
+        JTableColumnAutoResize.resizeColumnWidth(jTable1);
     }
 
     @SuppressWarnings("unchecked")
@@ -93,38 +95,9 @@ public class FrmPatientList extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setRowHeight(27);
-        jTable1.setSelectionBackground(new java.awt.Color(229, 231, 233));
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(80);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(250);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(5).setMinWidth(110);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(120);
-            jTable1.getColumnModel().getColumn(7).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(120);
-            jTable1.getColumnModel().getColumn(8).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(150);
-            jTable1.getColumnModel().getColumn(9).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(10).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(11).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(12).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(12).setMaxWidth(150);
-        }
 
         jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 

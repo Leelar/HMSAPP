@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class Util {
     public static void infoMsg(String info){
-        JOptionPane.showMessageDialog(null, info,"Info message",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+"ສຳເລັດແລ້ວ"+"</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.INFORMATION_MESSAGE);
     }
     public static void waringMsg(String warning){
-        JOptionPane.showMessageDialog(null, warning,"Warning message",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+"ຂໍ້ມູນຜິດພາດ"+"</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.WARNING_MESSAGE);
     }
 }

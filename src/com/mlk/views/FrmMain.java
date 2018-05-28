@@ -1,12 +1,15 @@
 
 package com.mlk.views;
 
+import com.mlk.controllers.ControlDeskTopPane;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.beans.PropertyVetoException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -342,15 +345,15 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSMDoctorListActionPerformed
 
     private void btnSMPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMPositionActionPerformed
-        FrmPosition frmPosition = new FrmPosition();
-        DeskTopControl.add(frmPosition);
-        frmPosition.setVisible(true);       
+        FrmPosition frmPosition = new FrmPosition();      
+        ControlDeskTopPane aa = new ControlDeskTopPane();
+        aa.controljInternalFrame(DeskTopControl, frmPosition, "Position");
     }//GEN-LAST:event_btnSMPositionActionPerformed
 
     private void btnSMHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMHospitalInfoActionPerformed
         FrmHospital frmHospitalInfo = new FrmHospital();
-        DeskTopControl.add(frmHospitalInfo);
-        frmHospitalInfo.setVisible(true); 
+        ControlDeskTopPane aa = new ControlDeskTopPane();
+        aa.controljInternalFrame(DeskTopControl, frmHospitalInfo, "Hospital Info");
     }//GEN-LAST:event_btnSMHospitalInfoActionPerformed
 
     private void btnSMDisttrictInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDisttrictInfoActionPerformed
