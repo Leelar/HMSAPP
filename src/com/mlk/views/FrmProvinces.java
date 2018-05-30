@@ -15,6 +15,7 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -25,6 +26,8 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Province List");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
@@ -58,8 +61,6 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel5, java.awt.BorderLayout.CENTER);
-
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnNew3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -90,7 +91,7 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 487, Short.MAX_VALUE))
+                .addGap(0, 465, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +104,28 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel8, java.awt.BorderLayout.PAGE_START);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,6 +140,7 @@ public class FrmProvinces extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNew3;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;

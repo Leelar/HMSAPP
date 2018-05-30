@@ -250,6 +250,11 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMNationalityInfo.setText("ສັນຊາດ");
         btnSMNationalityInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
         btnSMNationalityInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMNationalityInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMNationalityInfoActionPerformed(evt);
+            }
+        });
         jTaskPaneGroup6.getContentPane().add(btnSMNationalityInfo);
 
         btnSMProvinceInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Canada Map_24px.png"))); // NOI18N
@@ -322,11 +327,11 @@ public class FrmMain extends javax.swing.JFrame {
         FrmPatientList patientObject = new FrmPatientList();
         DeskTopControl.add(patientObject);
         patientObject.setVisible(true);
-        try {
-          patientObject.setMaximum(true);
-        } catch (PropertyVetoException e) {
-            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-        }
+//        try {
+//          patientObject.setMaximum(true);
+//        } catch (PropertyVetoException e) {
+//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+//        }
     }//GEN-LAST:event_btnSMPatientListActionPerformed
 
     private void btnSMRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRegisterActionPerformed
@@ -337,11 +342,11 @@ public class FrmMain extends javax.swing.JFrame {
         FrmDoctorList frmDoctorList = new FrmDoctorList();
         DeskTopControl.add(frmDoctorList);
         frmDoctorList.setVisible(true);
-        try {
-          frmDoctorList.setMaximum(true);
-        } catch (PropertyVetoException e) {
-            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-        }
+//        try {
+//          frmDoctorList.setMaximum(true);
+//        } catch (PropertyVetoException e) {
+//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+//        }
     }//GEN-LAST:event_btnSMDoctorListActionPerformed
 
     private void btnSMPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMPositionActionPerformed
@@ -360,23 +365,27 @@ public class FrmMain extends javax.swing.JFrame {
       FrmDistricts districtsObject = new FrmDistricts();
         DeskTopControl.add(districtsObject);
         districtsObject.setVisible(true);
-        try {
-          districtsObject.setMaximum(true);
-        } catch (PropertyVetoException e) {
-            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-        }
+//        try {
+//          districtsObject.setMaximum(true);
+//        } catch (PropertyVetoException e) {
+//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+//        }
     }//GEN-LAST:event_btnSMDisttrictInfoActionPerformed
 
     private void btnSMProvinceInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMProvinceInfoActionPerformed
        FrmProvinces provinceObj = new FrmProvinces();
         DeskTopControl.add(provinceObj);
         provinceObj.setVisible(true);
-        try {
-          provinceObj.setMaximum(true);
-        } catch (PropertyVetoException e) {
-            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-        }
+//        try {
+//          provinceObj.setMaximum(true);
+//        } catch (PropertyVetoException e) {
+//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+//        }
     }//GEN-LAST:event_btnSMProvinceInfoActionPerformed
+
+    private void btnSMNationalityInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMNationalityInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSMNationalityInfoActionPerformed
 
     /**
      * @param args the command line arguments

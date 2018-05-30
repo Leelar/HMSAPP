@@ -26,6 +26,8 @@ public class FrmDistricts extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("District List");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(1100, 638));
@@ -135,15 +137,11 @@ public class FrmDistricts extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNew2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnNew1;
     private javax.swing.JButton btnNew2;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
