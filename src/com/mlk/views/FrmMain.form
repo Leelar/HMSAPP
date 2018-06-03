@@ -923,6 +923,9 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSMRoomInfoActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.xzq.osc.JocHyperlink" name="btnBedInfo">
                           <Properties>
@@ -935,6 +938,9 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBedInfoActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.xzq.osc.JocHyperlink" name="btnSMNationalityInfo">
                           <Properties>

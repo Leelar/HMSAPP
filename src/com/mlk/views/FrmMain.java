@@ -238,12 +238,22 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMRoomInfo.setText("ຫ້ອງນອນ");
         btnSMRoomInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
         btnSMRoomInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMRoomInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMRoomInfoActionPerformed(evt);
+            }
+        });
         jTaskPaneGroup6.getContentPane().add(btnSMRoomInfo);
 
         btnBedInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Hotel Bed_24px.png"))); // NOI18N
         btnBedInfo.setText("ຂໍ້ມູນຕຽງນອນ");
         btnBedInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
         btnBedInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBedInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBedInfoActionPerformed(evt);
+            }
+        });
         jTaskPaneGroup6.getContentPane().add(btnBedInfo);
 
         btnSMNationalityInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Flag 2_24px.png"))); // NOI18N
@@ -324,7 +334,7 @@ public class FrmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSMPatientListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMPatientListActionPerformed
-        FrmPatientList patientObject = new FrmPatientList();
+        FrmPatients patientObject = new FrmPatients();
         DeskTopControl.add(patientObject);
         patientObject.setVisible(true);
 //        try {
@@ -339,7 +349,7 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSMRegisterActionPerformed
 
     private void btnSMDoctorListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDoctorListActionPerformed
-        FrmDoctorList frmDoctorList = new FrmDoctorList();
+        FrmDoctors frmDoctorList = new FrmDoctors();
         DeskTopControl.add(frmDoctorList);
         frmDoctorList.setVisible(true);
 //        try {
@@ -362,7 +372,7 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSMHospitalInfoActionPerformed
 
     private void btnSMDisttrictInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDisttrictInfoActionPerformed
-      FrmDistricts districtsObject = new FrmDistricts();
+        FrmDistricts districtsObject = new FrmDistricts();
         DeskTopControl.add(districtsObject);
         districtsObject.setVisible(true);
 //        try {
@@ -384,8 +394,22 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSMProvinceInfoActionPerformed
 
     private void btnSMNationalityInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMNationalityInfoActionPerformed
-        // TODO add your handling code here:
+        FrmNationality frm =  new FrmNationality();
+        DeskTopControl.add(frm);
+        frm.setVisible(true);
     }//GEN-LAST:event_btnSMNationalityInfoActionPerformed
+
+    private void btnSMRoomInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRoomInfoActionPerformed
+        FrmRooms frm = new FrmRooms();
+        DeskTopControl.add(frm);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnSMRoomInfoActionPerformed
+
+    private void btnBedInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBedInfoActionPerformed
+        FrmBeds frm = new FrmBeds();
+        DeskTopControl.add(frm);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnBedInfoActionPerformed
 
     /**
      * @param args the command line arguments
