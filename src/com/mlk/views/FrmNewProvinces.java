@@ -5,6 +5,8 @@
  */
 package com.mlk.views;
 
+import java.awt.Color;
+
 /**
  *
  * @author kor
@@ -17,6 +19,7 @@ public class FrmNewProvinces extends javax.swing.JDialog {
     public FrmNewProvinces(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        txtID.setDisabledTextColor(Color.BLACK);
     }
 
     /**
@@ -43,6 +46,11 @@ public class FrmNewProvinces extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -54,6 +62,8 @@ public class FrmNewProvinces extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("ຊື່ແຂວງ");
 
+        txtID.setText("New");
+        txtID.setEnabled(false);
         txtID.setName("txtID"); // NOI18N
 
         txtName.setName("txtName"); // NOI18N
@@ -77,7 +87,7 @@ public class FrmNewProvinces extends javax.swing.JDialog {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,6 +150,10 @@ public class FrmNewProvinces extends javax.swing.JDialog {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

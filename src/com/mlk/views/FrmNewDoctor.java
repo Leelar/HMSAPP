@@ -1,10 +1,13 @@
 package com.mlk.views;
 
+import java.awt.Color;
+
 public class FrmNewDoctor extends javax.swing.JDialog {
 
     public FrmNewDoctor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        txtDoctorID.setDisabledTextColor(Color.BLACK);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +48,11 @@ public class FrmNewDoctor extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Doctor");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(138, 57));
@@ -71,6 +79,8 @@ public class FrmNewDoctor extends javax.swing.JDialog {
         jLabel1.setText("ລະຫັດ");
 
         txtDoctorID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtDoctorID.setText("New");
+        txtDoctorID.setEnabled(false);
 
         jTextField2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
@@ -267,6 +277,10 @@ public class FrmNewDoctor extends javax.swing.JDialog {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

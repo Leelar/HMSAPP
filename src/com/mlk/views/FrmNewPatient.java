@@ -3,17 +3,14 @@ package com.mlk.views;
 
 import com.mlk.controllers.DatabaseManager;
 import com.mlk.models.Patient;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Color;
 public class FrmNewPatient extends javax.swing.JDialog {
 
     private DatabaseManager dbm = new DatabaseManager();
     public FrmNewPatient(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        txtCode.setDisabledTextColor(Color.BLACK);
     }
 
     /**
@@ -46,19 +43,24 @@ public class FrmNewPatient extends javax.swing.JDialog {
         txtNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cmbOccupation = new javax.swing.JComboBox<String>();
+        cmbOccupation = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtVillage = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        cmbDistrict = new javax.swing.JComboBox<String>();
+        cmbDistrict = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        cmbProvince = new javax.swing.JComboBox<String>();
+        cmbProvince = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        cmbNationality = new javax.swing.JComboBox<String>();
+        cmbNationality = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Patient");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
@@ -82,6 +84,8 @@ public class FrmNewPatient extends javax.swing.JDialog {
         jLabel1.setText("ລະຫັດ");
 
         txtCode.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtCode.setText("New");
+        txtCode.setEnabled(false);
         txtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeActionPerformed(evt);
@@ -142,7 +146,7 @@ public class FrmNewPatient extends javax.swing.JDialog {
         jLabel8.setText("ອາຊີບ");
 
         cmbOccupation.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        cmbOccupation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Farmer", "Student", "Officer" }));
+        cmbOccupation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farmer", "Student", "Officer" }));
 
         jLabel9.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel9.setText("ບ້ານຢູ່ປັດຈຸບັນ");
@@ -158,19 +162,19 @@ public class FrmNewPatient extends javax.swing.JDialog {
         jLabel10.setText("ເມືອງ");
 
         cmbDistrict.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        cmbDistrict.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Xaysomboun", "Thathom", "Hom", "Longxarn" }));
+        cmbDistrict.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xaysomboun", "Thathom", "Hom", "Longxarn" }));
 
         jLabel11.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel11.setText("ແຂວງ");
 
         cmbProvince.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        cmbProvince.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Xaysomboun", "Bolikhamxay", "Vientiane", "Xiengkhoang" }));
+        cmbProvince.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xaysomboun", "Bolikhamxay", "Vientiane", "Xiengkhoang" }));
 
         jLabel12.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel12.setText("ສັນຊາດ");
 
         cmbNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        cmbNationality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lao", "Thai", "Chinese", "Vietian", "American" }));
+        cmbNationality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lao", "Thai", "Chinese", "Vietian", "American" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -365,6 +369,10 @@ public class FrmNewPatient extends javax.swing.JDialog {
 //        this.setVisible(false);
 //        this.dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
