@@ -912,6 +912,21 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSMHospitalInfoActionPerformed"/>
                           </Events>
                         </Component>
+                        <Component class="com.xzq.osc.JocHyperlink" name="btnSMRoomInfo1">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/com/mlk/icons/Room_24px.png"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="&#xe9b;&#xeb0;&#xec0;&#xe9e;&#xe94;&#xeab;&#xec9;&#xead;&#xe87;"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Saysettha OT" size="14" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="2"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSMRoomInfo1ActionPerformed"/>
+                          </Events>
+                        </Component>
                         <Component class="com.xzq.osc.JocHyperlink" name="btnSMRoomInfo">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1073,7 +1088,23 @@
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="47_btnSMRoomInfo">
+                            <CodeExpression id="47_btnSMRoomInfo1">
+                              <CodeVariable name="btnSMRoomInfo1" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
+                              <ExpressionOrigin>
+                                <ExpressionProvider type="ComponentRef">
+                                  <ComponentRef name="btnSMRoomInfo1"/>
+                                </ExpressionProvider>
+                              </ExpressionOrigin>
+                            </CodeExpression>
+                          </Parameters>
+                        </CodeStatement>
+                        <CodeStatement>
+                          <CodeExpression id="44"/>
+                          <StatementProvider type="CodeMethod">
+                            <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
+                          </StatementProvider>
+                          <Parameters>
+                            <CodeExpression id="48_btnSMRoomInfo">
                               <CodeVariable name="btnSMRoomInfo" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
                               <ExpressionOrigin>
                                 <ExpressionProvider type="ComponentRef">
@@ -1089,7 +1120,7 @@
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="48_btnBedInfo">
+                            <CodeExpression id="49_btnBedInfo">
                               <CodeVariable name="btnBedInfo" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
                               <ExpressionOrigin>
                                 <ExpressionProvider type="ComponentRef">
@@ -1105,7 +1136,7 @@
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="49_btnSMNationalityInfo">
+                            <CodeExpression id="50_btnSMNationalityInfo">
                               <CodeVariable name="btnSMNationalityInfo" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
                               <ExpressionOrigin>
                                 <ExpressionProvider type="ComponentRef">
@@ -1121,7 +1152,7 @@
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="50_btnSMProvinceInfo">
+                            <CodeExpression id="51_btnSMProvinceInfo">
                               <CodeVariable name="btnSMProvinceInfo" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
                               <ExpressionOrigin>
                                 <ExpressionProvider type="ComponentRef">
@@ -1137,7 +1168,7 @@
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="51_btnSMDisttrictInfo">
+                            <CodeExpression id="52_btnSMDisttrictInfo">
                               <CodeVariable name="btnSMDisttrictInfo" type="8194" declaredType="com.xzq.osc.JocHyperlink"/>
                               <ExpressionOrigin>
                                 <ExpressionProvider type="ComponentRef">
@@ -1157,7 +1188,7 @@
                   </SubComponents>
                   <LayoutCode>
                     <CodeStatement>
-                      <CodeExpression id="52_percentLayout1">
+                      <CodeExpression id="53_percentLayout1">
                         <CodeVariable name="percentLayout1" type="4096" declaredType="com.l2fprod.common.swing.PercentLayout"/>
                         <ExpressionOrigin>
                           <ExpressionProvider type="CodeConstructor">
@@ -1166,16 +1197,16 @@
                         </ExpressionOrigin>
                       </CodeExpression>
                       <StatementProvider type="CodeExpression">
-                        <CodeExpression id="52_percentLayout1"/>
+                        <CodeExpression id="53_percentLayout1"/>
                       </StatementProvider>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52_percentLayout1"/>
+                      <CodeExpression id="53_percentLayout1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="setGap" class="com.l2fprod.common.swing.PercentLayout" parameterTypes="int"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="53">
+                        <CodeExpression id="54">
                           <ExpressionOrigin>
                             <Value type="int" value="14"/>
                           </ExpressionOrigin>
@@ -1183,12 +1214,12 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52_percentLayout1"/>
+                      <CodeExpression id="53_percentLayout1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="setOrientation" class="com.l2fprod.common.swing.PercentLayout" parameterTypes="int"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="54">
+                        <CodeExpression id="55">
                           <ExpressionOrigin>
                             <Value type="int" value="1"/>
                           </ExpressionOrigin>
@@ -1196,7 +1227,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1">
+                      <CodeExpression id="56_jTaskPane1">
                         <CodeVariable name="jTaskPane1" type="8194" declaredType="com.l2fprod.common.swing.JTaskPane"/>
                         <ExpressionOrigin>
                           <ExpressionProvider type="ComponentRef">
@@ -1208,11 +1239,11 @@
                         <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="52_percentLayout1"/>
+                        <CodeExpression id="53_percentLayout1"/>
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1221,7 +1252,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1230,7 +1261,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1239,7 +1270,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1248,7 +1279,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1257,7 +1288,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1266,12 +1297,12 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="55_jTaskPane1"/>
+                      <CodeExpression id="56_jTaskPane1"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="56_jLabel1">
+                        <CodeExpression id="57_jLabel1">
                           <CodeVariable name="jLabel1" type="8194" declaredType="javax.swing.JLabel"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">

@@ -2,9 +2,10 @@
 package com.mlk.views;
 import com.mlk.controllers.JTableColumnAutoResize;
 import java.awt.Font; 
-public class FrmRooms extends javax.swing.JInternalFrame {
+import com.mlk.views.FrmNewProvinces;
+public class FrmRoomType extends javax.swing.JInternalFrame {
 
-    public FrmRooms() {
+    public FrmRoomType() {
         initComponents();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD, 12));
         JTableColumnAutoResize.resizeColumnWidth(jTable1);
@@ -27,7 +28,7 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Room");
+        setTitle("Room Type");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -36,14 +37,14 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "ລະຫັດ", "ຫ້ອງນອນ", "ປະເພດຫ້ອງ", "ລາຄາ", "ໝາຍເຫດ"
+                "ລະຫັດ", "ຊື່ປະເພດຫ້ອງ", "ລາຄາ", "ໝາຍເຫດ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -56,12 +57,6 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(100);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
         }
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -80,7 +75,7 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         btnRefresh.setText("ໂຫຼດຂໍ້ມູນມາໃໝ່");
 
         jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setText("ຄົ້ນຫາຕາມລະຫັດ,ຊື່");
+        jLabel1.setText("ຄົ້ນຫາຕາມລະຫັດ");
 
         jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
@@ -93,10 +88,10 @@ public class FrmRooms extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRefresh)
                 .addGap(54, 54, 54)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 496, Short.MAX_VALUE))
+                .addGap(0, 507, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +103,6 @@ public class FrmRooms extends javax.swing.JInternalFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 2, Short.MAX_VALUE))
         );
-
-        jPanel8Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jTextField1});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,8 +131,8 @@ public class FrmRooms extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNew3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew3ActionPerformed
-        FrmNewRoom frm = new FrmNewRoom(null, closable);
-        frm.setVisible(true);
+        FrmNewRoomType newDoctorObject = new FrmNewRoomType(null, closable);
+        newDoctorObject.setVisible(true);
     }//GEN-LAST:event_btnNew3ActionPerformed
 
 

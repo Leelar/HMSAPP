@@ -54,6 +54,7 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMPosition = new com.xzq.osc.JocHyperlink();
         jTaskPaneGroup6 = new com.l2fprod.common.swing.JTaskPaneGroup();
         btnSMHospitalInfo = new com.xzq.osc.JocHyperlink();
+        btnSMRoomInfo1 = new com.xzq.osc.JocHyperlink();
         btnSMRoomInfo = new com.xzq.osc.JocHyperlink();
         btnBedInfo = new com.xzq.osc.JocHyperlink();
         btnSMNationalityInfo = new com.xzq.osc.JocHyperlink();
@@ -234,6 +235,17 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jTaskPaneGroup6.getContentPane().add(btnSMHospitalInfo);
 
+        btnSMRoomInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Room_24px.png"))); // NOI18N
+        btnSMRoomInfo1.setText("ປະເພດຫ້ອງ");
+        btnSMRoomInfo1.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
+        btnSMRoomInfo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMRoomInfo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMRoomInfo1ActionPerformed(evt);
+            }
+        });
+        jTaskPaneGroup6.getContentPane().add(btnSMRoomInfo1);
+
         btnSMRoomInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Room_24px.png"))); // NOI18N
         btnSMRoomInfo.setText("ຫ້ອງນອນ");
         btnSMRoomInfo.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
@@ -411,6 +423,12 @@ public class FrmMain extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_btnBedInfoActionPerformed
 
+    private void btnSMRoomInfo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRoomInfo1ActionPerformed
+        FrmRoomType frm = new FrmRoomType();
+        DeskTopControl.add(frm);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnSMRoomInfo1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,6 +480,7 @@ public class FrmMain extends javax.swing.JFrame {
     private com.xzq.osc.JocHyperlink btnSMProvinceInfo;
     private com.xzq.osc.JocHyperlink btnSMRegister;
     private com.xzq.osc.JocHyperlink btnSMRoomInfo;
+    private com.xzq.osc.JocHyperlink btnSMRoomInfo1;
     private com.xzq.osc.JocHyperlink btnSMRtpPatient;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
