@@ -36,14 +36,14 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ລະຫັດ", "ຫ້ອງນອນ", "ປະເພດຫ້ອງ", "ລາຄາ", "ໝາຍເຫດ"
+                "ລະຫັດ", "ຫ້ອງນອນ", "ປະເພດຫ້ອງ", "ຕຽນ", "ລາຄາ", "ໝາຍເຫດ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -60,8 +60,10 @@ public class FrmRooms extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(2).setMinWidth(100);
             jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(70);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
