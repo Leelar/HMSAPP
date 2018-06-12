@@ -26,8 +26,6 @@ public class FrmDistricts extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setTitle("District List");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(1100, 638));
@@ -132,8 +130,8 @@ public class FrmDistricts extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNew2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew2ActionPerformed
-        FrmNewDoctor newDoctorObject = new FrmNewDoctor(null, closable);
-        newDoctorObject.setVisible(true);
+        FrmNewDistricts newDistrictrObject = new FrmNewDistricts(null, closable);
+        newDistrictrObject.setVisible(true);
     }//GEN-LAST:event_btnNew2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

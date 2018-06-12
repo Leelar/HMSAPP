@@ -54,6 +54,7 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMPosition = new com.xzq.osc.JocHyperlink();
         jTaskPaneGroup6 = new com.l2fprod.common.swing.JTaskPaneGroup();
         btnSMHospitalInfo = new com.xzq.osc.JocHyperlink();
+        btnSMDepartment = new com.xzq.osc.JocHyperlink();
         btnSMRoomInfo1 = new com.xzq.osc.JocHyperlink();
         btnSMRoomInfo = new com.xzq.osc.JocHyperlink();
         btnBedInfo = new com.xzq.osc.JocHyperlink();
@@ -235,6 +236,17 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jTaskPaneGroup6.getContentPane().add(btnSMHospitalInfo);
 
+        btnSMDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Department_24px.png"))); // NOI18N
+        btnSMDepartment.setText("ພະແນກ");
+        btnSMDepartment.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
+        btnSMDepartment.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSMDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMDepartmentActionPerformed(evt);
+            }
+        });
+        jTaskPaneGroup6.getContentPane().add(btnSMDepartment);
+
         btnSMRoomInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Room_24px.png"))); // NOI18N
         btnSMRoomInfo1.setText("ປະເພດຫ້ອງ");
         btnSMRoomInfo1.setFont(new java.awt.Font("Saysettha OT", 0, 14)); // NOI18N
@@ -349,36 +361,52 @@ public class FrmMain extends javax.swing.JFrame {
         FrmPatients patientObject = new FrmPatients();
         DeskTopControl.add(patientObject);
         patientObject.setVisible(true);
-//        try {
-//          patientObject.setMaximum(true);
-//        } catch (PropertyVetoException e) {
-//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-//        }
+        try {
+          patientObject.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMPatientListActionPerformed
 
     private void btnSMRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRegisterActionPerformed
-        // TODO add your handling code here:
+        FrmRegistrations regObject = new FrmRegistrations();
+        DeskTopControl.add(regObject);
+        regObject.setVisible(true);
+        try {
+          regObject.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMRegisterActionPerformed
 
     private void btnSMDoctorListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDoctorListActionPerformed
         FrmDoctors frmDoctorList = new FrmDoctors();
         DeskTopControl.add(frmDoctorList);
         frmDoctorList.setVisible(true);
-//        try {
-//          frmDoctorList.setMaximum(true);
-//        } catch (PropertyVetoException e) {
-//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-//        }
+        try {
+          frmDoctorList.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMDoctorListActionPerformed
 
     private void btnSMPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMPositionActionPerformed
-        FrmPosition frmPosition = new FrmPosition();      
-        ControlDeskTopPane aa = new ControlDeskTopPane();
-        aa.controljInternalFrame(DeskTopControl, frmPosition, "Position");
+        FrmPosition frmPosition = new FrmPosition();
+        DeskTopControl.add(frmPosition);
+        frmPosition.setVisible(true);
+        try {
+          frmPosition.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
+//        ControlDeskTopPane aa = new ControlDeskTopPane();
+//        aa.controljInternalFrame(DeskTopControl, frmPosition, "Position");
     }//GEN-LAST:event_btnSMPositionActionPerformed
 
     private void btnSMHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMHospitalInfoActionPerformed
         FrmHospital frmHospitalInfo = new FrmHospital();
+        DeskTopControl.add(frmHospitalInfo);
+        frmHospitalInfo.setVisible(true);
         ControlDeskTopPane aa = new ControlDeskTopPane();
         aa.controljInternalFrame(DeskTopControl, frmHospitalInfo, "Hospital Info");
     }//GEN-LAST:event_btnSMHospitalInfoActionPerformed
@@ -387,47 +415,78 @@ public class FrmMain extends javax.swing.JFrame {
         FrmDistricts districtsObject = new FrmDistricts();
         DeskTopControl.add(districtsObject);
         districtsObject.setVisible(true);
-//        try {
-//          districtsObject.setMaximum(true);
-//        } catch (PropertyVetoException e) {
-//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-//        }
+        try {
+          districtsObject.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMDisttrictInfoActionPerformed
 
     private void btnSMProvinceInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMProvinceInfoActionPerformed
        FrmProvinces provinceObj = new FrmProvinces();
         DeskTopControl.add(provinceObj);
         provinceObj.setVisible(true);
-//        try {
-//          provinceObj.setMaximum(true);
-//        } catch (PropertyVetoException e) {
-//            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
-//        }
+        try {
+          provinceObj.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMProvinceInfoActionPerformed
 
     private void btnSMNationalityInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMNationalityInfoActionPerformed
         FrmNationality frm =  new FrmNationality();
         DeskTopControl.add(frm);
         frm.setVisible(true);
+        try {
+          frm.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMNationalityInfoActionPerformed
 
     private void btnSMRoomInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRoomInfoActionPerformed
         FrmRooms frm = new FrmRooms();
         DeskTopControl.add(frm);
         frm.setVisible(true);
+        try {
+          frm.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMRoomInfoActionPerformed
 
     private void btnBedInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBedInfoActionPerformed
         FrmBeds frm = new FrmBeds();
         DeskTopControl.add(frm);
         frm.setVisible(true);
+        try {
+          frm.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnBedInfoActionPerformed
 
     private void btnSMRoomInfo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMRoomInfo1ActionPerformed
         FrmRoomType frm = new FrmRoomType();
         DeskTopControl.add(frm);
         frm.setVisible(true);
+        try {
+          frm.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
     }//GEN-LAST:event_btnSMRoomInfo1ActionPerformed
+
+    private void btnSMDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMDepartmentActionPerformed
+        FrmDepartments frm = new FrmDepartments();
+        DeskTopControl.add(frm);
+        frm.setVisible(true);
+        try {
+          frm.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            JOptionPane.showConfirmDialog(null,"Can not be maximized!");
+        }
+    }//GEN-LAST:event_btnSMDepartmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -471,6 +530,7 @@ public class FrmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DeskTopControl;
     private com.xzq.osc.JocHyperlink btnBedInfo;
+    private com.xzq.osc.JocHyperlink btnSMDepartment;
     private com.xzq.osc.JocHyperlink btnSMDisttrictInfo;
     private com.xzq.osc.JocHyperlink btnSMDoctorList;
     private com.xzq.osc.JocHyperlink btnSMHospitalInfo;

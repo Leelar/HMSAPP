@@ -27,8 +27,6 @@ public class FrmPatients extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setTitle("Patient List");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Sick_24px.png"))); // NOI18N
 

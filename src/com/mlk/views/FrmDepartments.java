@@ -3,9 +3,9 @@ package com.mlk.views;
 import com.mlk.controllers.JTableColumnAutoResize;
 import java.awt.Font; 
 import com.mlk.views.FrmNewProvinces;
-public class FrmRoomType extends javax.swing.JInternalFrame {
+public class FrmDepartments extends javax.swing.JInternalFrame {
 
-    public FrmRoomType() {
+    public FrmDepartments() {
         initComponents();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD, 12));
         JTableColumnAutoResize.resizeColumnWidth(jTable1);
@@ -26,7 +26,7 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
-        setTitle("Room Type");
+        setTitle("Department List");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -35,14 +35,14 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null}
             },
             new String [] {
-                "ລະຫັດ", "ຊື່ປະເພດຫ້ອງ", "ລາຄາ", "ໝາຍເຫດ"
+                "ລະຫັດ", "ຊື່ພະແນກ", "ໝາຍເຫດ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -73,7 +73,7 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
         btnRefresh.setText("ໂຫຼດຂໍ້ມູນມາໃໝ່");
 
         jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setText("ຄົ້ນຫາຕາມລະຫັດ");
+        jLabel1.setText("ຄົ້ນຫາຕາມລະຫັດ,ຊື່");
 
         jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
@@ -86,10 +86,10 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRefresh)
                 .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 507, Short.MAX_VALUE))
+                .addGap(0, 496, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +129,7 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNew3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew3ActionPerformed
-        FrmNewRoomType newDoctorObject = new FrmNewRoomType(null, closable);
+        FrmNewDepartment newDoctorObject = new FrmNewDepartment(null, closable);
         newDoctorObject.setVisible(true);
     }//GEN-LAST:event_btnNew3ActionPerformed
 

@@ -24,8 +24,6 @@ public class FrmDoctors extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setTitle("Doctor List");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 

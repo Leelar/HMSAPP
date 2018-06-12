@@ -26,8 +26,6 @@ public class FrmNationality extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setTitle("Nationality");
         setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
