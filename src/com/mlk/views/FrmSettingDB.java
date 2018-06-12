@@ -33,14 +33,20 @@ public class FrmSettingDB extends javax.swing.JDialog {
         btnRead = new javax.swing.JButton();
         btnTest = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Configuration");
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 153, 255), 2, true));
 
         txtUserName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtUserName.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -50,6 +56,12 @@ public class FrmSettingDB extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Server_24px.png"))); // NOI18N
 
         txtDatabaseName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtDatabaseName.setBorder(null);
+        txtDatabaseName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatabaseNameActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Database_24px.png"))); // NOI18N
@@ -58,30 +70,44 @@ public class FrmSettingDB extends javax.swing.JDialog {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/User_24px.png"))); // NOI18N
 
         txtPassword.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtPassword.setBorder(null);
 
         txtServerName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtServerName.setBorder(null);
 
         jLabel4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mlk/icons/Password 1_24px.png"))); // NOI18N
 
+        btnRead.setBackground(new java.awt.Color(50, 104, 204));
         btnRead.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnRead.setForeground(new java.awt.Color(255, 255, 255));
         btnRead.setText("ອ່ານຖານ");
+        btnRead.setContentAreaFilled(false);
+        btnRead.setOpaque(true);
         btnRead.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReadActionPerformed(evt);
             }
         });
 
+        btnTest.setBackground(new java.awt.Color(50, 104, 204));
         btnTest.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnTest.setForeground(new java.awt.Color(255, 255, 255));
         btnTest.setText("ທົດລອງ");
+        btnTest.setContentAreaFilled(false);
+        btnTest.setOpaque(true);
         btnTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestActionPerformed(evt);
             }
         });
 
+        btnSave.setBackground(new java.awt.Color(50, 104, 204));
         btnSave.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("ບັນທຶກ");
+        btnSave.setContentAreaFilled(false);
+        btnSave.setOpaque(true);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -95,26 +121,32 @@ public class FrmSettingDB extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword)
                             .addComponent(txtUserName)
                             .addComponent(txtDatabaseName)
-                            .addComponent(txtServerName)))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
+                            .addComponent(txtServerName)
+                            .addComponent(jSeparator1)
+                            .addComponent(jSeparator2)
+                            .addComponent(jSeparator3)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTest)
-                        .addGap(2, 2, 2)
-                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(68, 68, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTest)
+                                .addGap(2, 2, 2)
+                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(68, 68, 68))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -132,19 +164,27 @@ public class FrmSettingDB extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(txtServerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtDatabaseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(2, 2, 2)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(10, 10, 10)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRead)
                     .addComponent(btnTest)
@@ -182,6 +222,10 @@ public class FrmSettingDB extends javax.swing.JDialog {
         txtUserName.setText(df.getUserName());
         txtPassword.setText(df.getPassword());
     }//GEN-LAST:event_btnReadActionPerformed
+
+    private void txtDatabaseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatabaseNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatabaseNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,6 +279,10 @@ public class FrmSettingDB extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField txtDatabaseName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtServerName;
