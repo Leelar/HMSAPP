@@ -58,7 +58,7 @@
                           <Component id="jLabel3" linkSize="1" pref="254" max="32767" attributes="0"/>
                           <Component id="txtUserName" linkSize="1" alignment="0" pref="254" max="32767" attributes="0"/>
                           <Component id="lblWarning" max="32767" attributes="0"/>
-                          <Component id="jPasswordField1" max="32767" attributes="0"/>
+                          <Component id="txtPassword" max="32767" attributes="0"/>
                       </Group>
                       <Component id="btnSignUp" min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
@@ -94,7 +94,7 @@
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" linkSize="2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -243,7 +243,7 @@
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -268,6 +268,9 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignUpActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

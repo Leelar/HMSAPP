@@ -5,6 +5,9 @@
  */
 package com.mlk.views;
 
+import com.mlk.controllers.LoginManager;
+import com.mlk.utils.Util;
+
 /**
  *
  * @author Programming
@@ -41,7 +44,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lblWarning = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,8 +120,8 @@ public class FrmLogin extends javax.swing.JFrame {
         lblWarning.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblWarning.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPasswordField1.setBorder(null);
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassword.setBorder(null);
 
         btnSignUp.setBackground(new java.awt.Color(50, 104, 204));
         btnSignUp.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -126,6 +129,11 @@ public class FrmLogin extends javax.swing.JFrame {
         btnSignUp.setText("ເຂົ້າສູ່ລະບົບ");
         btnSignUp.setContentAreaFilled(false);
         btnSignUp.setOpaque(true);
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,7 +150,7 @@ public class FrmLogin extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                         .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                         .addComponent(lblWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPasswordField1))
+                        .addComponent(txtPassword))
                     .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -173,7 +181,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4)
                 .addGap(1, 1, 1)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -183,7 +191,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPasswordField1, txtUserName});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPassword, txtUserName});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -199,6 +207,19 @@ public class FrmLogin extends javax.swing.JFrame {
         FrmSettingDB frm = new FrmSettingDB(null, rootPaneCheckingEnabled);
         frm.setVisible(true);
     }//GEN-LAST:event_btnDBSettingActionPerformed
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        LoginManager login = new LoginManager();
+        login.setUserName(txtUserName.getText().trim());
+        login.setPassword(txtPassword.getText().trim());
+        if (login.verifyUser()) {
+            this.dispose();
+            FrmMain main = new FrmMain(login.getUserName());
+            main.setVisible(true);
+        } else {
+            Util.waringMsg("ຊື່ ຫລື ລະຫັດບໍ່ຖືກຕ້ອງ, ກະລຸນາປ້ອນໃໝ່");
+        }
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,10 +267,10 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblWarning;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

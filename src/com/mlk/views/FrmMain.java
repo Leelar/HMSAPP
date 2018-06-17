@@ -2,6 +2,7 @@
 package com.mlk.views;
 
 import com.mlk.controllers.ControlDeskTopPane;
+import com.mlk.controllers.LoginManager;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,11 +18,14 @@ import javax.swing.UIManager;
 
 public class FrmMain extends javax.swing.JFrame {
     String img_background;
-    public FrmMain() {
+    String username;
+    public FrmMain(String username) {
+        this.username = username;
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         this.setVisible(true);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/com/mlk/images/Logo.png"))); 
+        this.lblUserName.setText("ຜູ້ເຂົ້າໃຊ້ລະບົບ: "+this.username);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +65,8 @@ public class FrmMain extends javax.swing.JFrame {
         btnSMNationalityInfo = new com.xzq.osc.JocHyperlink();
         btnSMProvinceInfo = new com.xzq.osc.JocHyperlink();
         btnSMDisttrictInfo = new com.xzq.osc.JocHyperlink();
-        jLabel1 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        lblUserName2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         img_background = "";
         ImageIcon icon = new ImageIcon(getClass().getResource(img_background));
@@ -315,8 +320,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         jTaskPane1.add(jTaskPaneGroup6);
 
-        jLabel1.setText("                                                                  ");
-        jTaskPane1.add(jLabel1);
+        lblUserName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblUserName.setText("                                   ");
+        jTaskPane1.add(lblUserName);
+
+        lblUserName2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblUserName2.setText("                                   ");
+        jTaskPane1.add(lblUserName2);
 
         jScrollPane1.setViewportView(jTaskPane1);
 
@@ -335,11 +345,11 @@ public class FrmMain extends javax.swing.JFrame {
         DeskTopControl.setLayout(DeskTopControlLayout);
         DeskTopControlLayout.setHorizontalGroup(
             DeskTopControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGap(0, 717, Short.MAX_VALUE)
         );
         DeskTopControlLayout.setVerticalGroup(
             DeskTopControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 772, Short.MAX_VALUE)
+            .addGap(0, 809, Short.MAX_VALUE)
         );
 
         jPanel2.add(DeskTopControl, java.awt.BorderLayout.CENTER);
@@ -522,7 +532,7 @@ public class FrmMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMain().setVisible(true);
+                new FrmMain("").setVisible(true);
             }
         });
     }
@@ -542,7 +552,6 @@ public class FrmMain extends javax.swing.JFrame {
     private com.xzq.osc.JocHyperlink btnSMRoomInfo;
     private com.xzq.osc.JocHyperlink btnSMRoomInfo1;
     private com.xzq.osc.JocHyperlink btnSMRtpPatient;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -566,5 +575,7 @@ public class FrmMain extends javax.swing.JFrame {
     private com.xzq.osc.JocHyperlink jocHyperlink23;
     private com.xzq.osc.JocHyperlink jocHyperlink8;
     private com.xzq.osc.JocHyperlink jocHyperlink9;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblUserName2;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,8 +2,10 @@ package com.mlk.controllers;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class DatabaseManager {
@@ -18,8 +20,8 @@ public class DatabaseManager {
             String password = "";
             String url;
             String sql;
-            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\HMS/Datasoure.accdb");
-            sql = "SELECT * FROM tbl_Datasoure where ID=1001";
+            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\HMS/SQLDatasourse.accdb");
+            sql = "SELECT * FROM tbl_Datasource where ID=1001";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             if (rs.next()) {
                 serverName = "jdbc:sqlserver://" + rs.getString("Servername");
@@ -48,6 +50,17 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         return null;
+    }
+    public String getUserPassword(String username) throws SQLException{
+        String pw = null;
+        Connection c = getConnection();
+        Statement statement = c.createStatement();
+        String query = "select * from tbl_UserLogin where UserName ='"+username+"'";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+           pw=rs.getString("UserPass").replaceAll(" ", "");
+        }
+        return pw;
     }
 //    public void insert(Patient pa) throws ClassNotFoundException, SQLException {
 //        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
