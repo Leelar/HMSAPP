@@ -128,6 +128,7 @@ public class FrmLogin extends javax.swing.JFrame {
         btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
         btnSignUp.setText("ເຂົ້າສູ່ລະບົບ");
         btnSignUp.setContentAreaFilled(false);
+        btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUp.setOpaque(true);
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
