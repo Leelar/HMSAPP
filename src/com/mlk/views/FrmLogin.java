@@ -122,6 +122,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPassword.setBorder(null);
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         btnSignUp.setBackground(new java.awt.Color(50, 104, 204));
         btnSignUp.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -221,6 +226,10 @@ public class FrmLogin extends javax.swing.JFrame {
             Util.waringMsg("ຊື່ ຫລື ລະຫັດບໍ່ຖືກຕ້ອງ, ກະລຸນາປ້ອນໃໝ່");
         }
     }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        btnSignUpActionPerformed(evt);
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
