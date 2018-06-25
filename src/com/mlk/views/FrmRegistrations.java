@@ -151,32 +151,32 @@ public class FrmRegistrations extends javax.swing.JInternalFrame {
         tablePatient.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         tablePatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ຊື່ຂອງຜູ້ເຈັບ"
+                "ລະຫັດ", "ຊື່ຂອງຜູ້ເຈັບ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -188,8 +188,10 @@ public class FrmRegistrations extends javax.swing.JInternalFrame {
         tablePatient.setRowHeight(27);
         PatientScrollPane.setViewportView(tablePatient);
         if (tablePatient.getColumnModel().getColumnCount() > 0) {
-            tablePatient.getColumnModel().getColumn(0).setMinWidth(268);
-            tablePatient.getColumnModel().getColumn(0).setMaxWidth(268);
+            tablePatient.getColumnModel().getColumn(0).setMinWidth(70);
+            tablePatient.getColumnModel().getColumn(0).setMaxWidth(70);
+            tablePatient.getColumnModel().getColumn(1).setMinWidth(184);
+            tablePatient.getColumnModel().getColumn(1).setMaxWidth(184);
         }
 
         jPanel3.add(PatientScrollPane, java.awt.BorderLayout.CENTER);
