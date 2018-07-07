@@ -13,9 +13,12 @@ import javax.swing.JOptionPane;
  */
 public class Util {
     public static void infoMsg(String info){
-        JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+"ສຳເລັດແລ້ວ"+"</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+info+"</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.INFORMATION_MESSAGE);
     }
-    public static void waringMsg(String warning){
+    public static void warningMsg(String warning){
         JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+warning+"</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.WARNING_MESSAGE);
+    }
+    public static boolean confirmMsg(String message){ 
+        return JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog (null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">"+message+"</font></p></html>","ການຢຶນຢັນ",JOptionPane.YES_NO_OPTION);
     }
 }

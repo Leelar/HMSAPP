@@ -223,7 +223,7 @@ public class FrmLogin extends javax.swing.JFrame {
             FrmMain main = new FrmMain(login.getUserName());
             main.setVisible(true);
         } else {
-            Util.waringMsg("ຊື່ ຫລື ລະຫັດບໍ່ຖືກຕ້ອງ, ກະລຸນາປ້ອນໃໝ່");
+            Util.warningMsg("ຊື່ ຫລື ລະຫັດບໍ່ຖືກຕ້ອງ, ກະລຸນາປ້ອນໃໝ່");
         }
     }//GEN-LAST:event_btnSignUpActionPerformed
 

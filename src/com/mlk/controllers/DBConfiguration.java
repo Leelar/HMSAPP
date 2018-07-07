@@ -79,7 +79,7 @@ public class DBConfiguration {
             if(p.executeUpdate()!=-1){
                 Util.infoMsg("Successful");
             }else{
-                Util.waringMsg("Failed");
+                Util.warningMsg("Failed");
             }
             
         } catch (Exception e) {

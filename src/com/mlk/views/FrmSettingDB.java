@@ -205,7 +205,7 @@ public class FrmSettingDB extends javax.swing.JDialog {
         if(df.testConnection()){
             Util.infoMsg("Successful");
         }else{
-            Util.waringMsg("Connect Failed");
+            Util.warningMsg("Connect Failed");
         }
     }//GEN-LAST:event_btnTestActionPerformed
 
