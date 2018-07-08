@@ -1,13 +1,19 @@
 
 package com.mlk.views;
 import com.mlk.controllers.JTableColumnAutoResize;
+import com.mlk.controllers.RoomManager;
+import com.mlk.models.Room;
 import java.awt.Font; 
+import javax.swing.table.DefaultTableModel;
 public class FrmRooms extends javax.swing.JInternalFrame {
-
+    DefaultTableModel model = new DefaultTableModel();
+    RoomManager manager = new RoomManager();
     public FrmRooms() {
         initComponents();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD, 12));
         JTableColumnAutoResize.resizeColumnWidth(jTable1);
+        model =(DefaultTableModel)jTable1.getModel();
+        manager.refresh(jTable1, model);
     }
 
     @SuppressWarnings("unchecked")
@@ -34,14 +40,14 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ລະຫັດ", "ຫ້ອງນອນ", "ປະເພດຫ້ອງ", "ຕຽນ", "ລາຄາ", "ໝາຍເຫດ"
+                "ລະຫັດ", "ຫ້ອງນອນ", "ປະເພດຫ້ອງ", "ຈຳນວນຕຽງ", "ລາຄາ", "ຢູ່ພະແນກ", "ໝາຍເຫດ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -138,8 +144,9 @@ public class FrmRooms extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNew3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew3ActionPerformed
-        FrmNewRoom frm = new FrmNewRoom(null, closable);
+        FrmNewRoom frm = new FrmNewRoom(null, closable,new Room(0,0,"", 1,1, 0, ""));
         frm.setVisible(true);
+        manager.refresh(jTable1, model);
     }//GEN-LAST:event_btnNew3ActionPerformed
 
 

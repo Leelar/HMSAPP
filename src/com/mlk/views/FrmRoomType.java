@@ -10,13 +10,13 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class FrmRoomType extends javax.swing.JInternalFrame {
     DefaultTableModel model = new DefaultTableModel();
-    RoomTypeManager rmTypeMgr = new RoomTypeManager();
+    RoomTypeManager manager = new RoomTypeManager();
     public FrmRoomType() {
         initComponents();
         tblRoomType.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD, 12));
         JTableColumnAutoResize.resizeColumnWidth(tblRoomType);
         model =(DefaultTableModel)tblRoomType.getModel();
-        rmTypeMgr.refresh(tblRoomType, model);
+        manager.refresh(tblRoomType, model);
     }
 
     @SuppressWarnings("unchecked")
@@ -178,12 +178,19 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         FrmNewRoomType newDoctorObject = new FrmNewRoomType(null,closable,new RoomType(0,"","") );
         newDoctorObject.setVisible(true);
-        rmTypeMgr.refresh(tblRoomType, model);
+        manager.refresh(tblRoomType, model);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void tblRoomTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomTypeMouseClicked
         if(evt.getClickCount() == 2 ){
-            
+        int id = Integer.parseInt(this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(), 0).toString().trim());
+        String name = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(), 1).toString().trim();
+        String note = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(),2).toString().trim();
+        RoomType rt = new RoomType(id, name, note);
+        
+        FrmNewRoomType newDoctorObject = new FrmNewRoomType(null, closable,rt);
+        newDoctorObject.setVisible(true);
+        manager.refresh(tblRoomType, model);
         }
     }//GEN-LAST:event_tblRoomTypeMouseClicked
 
@@ -196,13 +203,13 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
             String name = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(), 1).toString().trim();
             String note = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(),2).toString().trim();
             RoomType rt = new RoomType(id, name, note);
-            if(rmTypeMgr.delete(rt)){
+            if(manager.delete(rt)){
                 Util.infoMsg("ສຳເລັດ!");
-                rmTypeMgr.refresh(tblRoomType, model);
+                manager.refresh(tblRoomType, model);
             }
             else{
                 Util.warningMsg("ເກີດຂໍ້ຜິດພາດ");
-                rmTypeMgr.refresh(tblRoomType, model);
+                manager.refresh(tblRoomType, model);
             }
         }
     }//GEN-LAST:event_menuDeleteActionPerformed
@@ -215,7 +222,7 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
         
         FrmNewRoomType newDoctorObject = new FrmNewRoomType(null, closable,rt);
         newDoctorObject.setVisible(true);
-        rmTypeMgr.refresh(tblRoomType, model);
+        manager.refresh(tblRoomType, model);
     }//GEN-LAST:event_menuUpdateActionPerformed
 
 

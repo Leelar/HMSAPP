@@ -5,21 +5,38 @@
  */
 package com.mlk.views;
 
+import com.mlk.controllers.RoomManager;
+import com.mlk.models.Room;
+import com.mlk.utils.Util;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
  * @author kor
  */
 public class FrmNewRoom extends javax.swing.JDialog {
-
-    /**
-     * Creates new form FrmNewProvinces
-     */
-    public FrmNewRoom(java.awt.Frame parent, boolean modal) {
+    RoomManager manager = new RoomManager();
+    ArrayList<Integer> dept_ar;
+    ArrayList<Integer> type_ar;
+    public FrmNewRoom(java.awt.Frame parent, boolean modal, Room rm) {
         super(parent, modal);
         initComponents();
         txtID.setDisabledTextColor(Color.BLACK);
+        dept_ar = manager.configCMB("tbl_Department", "DeptID","DeptName", cmbDept);
+        type_ar = manager.configCMB("tbl_RoomType", "RTypeID","RTypeName", cmbRoomType);
+        if(rm.getRoomID() == 0){
+            this.txtID.setText("New");
+        }
+        else{
+            this.txtID.setText(String.valueOf(rm.getRoomID()).trim());
+            this.cmbDept.setSelectedIndex(dept_ar.indexOf(rm.getDeptID()));
+            this.txtName.setText(rm.getRoomCode());
+            this.cmbRoomType.setSelectedIndex(type_ar.indexOf(rm.getRoomType()));
+            this.txtQty.setText(String.valueOf(rm.getQty()));
+            this.txtPrice.setText(String.valueOf(rm.getPrice()));
+            this.txtNote.setText(rm.getNote());
+        }
     }
 
     /**
@@ -37,16 +54,16 @@ public class FrmNewRoom extends javax.swing.JDialog {
         txtID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtNote = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbRoomType = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
-        txtName1 = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtName2 = new javax.swing.JTextField();
+        txtQty = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbDept = new javax.swing.JComboBox<String>();
         jPanel3 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnCancal = new javax.swing.JButton();
@@ -77,9 +94,9 @@ public class FrmNewRoom extends javax.swing.JDialog {
 
         txtName.setName("txtName"); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtNote.setColumns(20);
+        txtNote.setRows(5);
+        jScrollPane2.setViewportView(txtNote);
 
         jLabel3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -89,28 +106,28 @@ public class FrmNewRoom extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("ປະເພດຫ້ອງ");
 
-        jComboBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ທຳມະດາ", "VIP" }));
+        cmbRoomType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cmbRoomType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ທຳມະດາ", "VIP" }));
 
         jLabel5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("ລາຄາ");
 
-        txtName1.setText("0");
-        txtName1.setName("txtName"); // NOI18N
+        txtPrice.setText("0");
+        txtPrice.setName("txtName"); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("ຈຳນວນຕຽນ");
+        jLabel6.setText("ຈຳນວນຕຽງ");
 
-        txtName2.setText("0");
-        txtName2.setName("txtName"); // NOI18N
+        txtQty.setText("0");
+        txtQty.setName("txtName"); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("ພະແນກ");
 
-        jComboBox2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cmbDept.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -135,19 +152,19 @@ public class FrmNewRoom extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmbRoomType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtName2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmbDept, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -160,7 +177,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbDept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,14 +185,14 @@ public class FrmNewRoom extends javax.swing.JDialog {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,11 +201,11 @@ public class FrmNewRoom extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jLabel1, jLabel2, jLabel4, txtID, txtName});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbRoomType, jLabel1, jLabel2, jLabel4, txtID, txtName});
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel5, jLabel6, txtName1, txtName2});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel5, jLabel6, txtPrice, txtQty});
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox2, jLabel7});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbDept, jLabel7});
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -222,7 +239,39 @@ public class FrmNewRoom extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        int deptId = this.dept_ar.get(this.cmbDept.getSelectedIndex());
+        String code = this.txtName.getText();
+        int type = this.dept_ar.get(this.cmbRoomType.getSelectedIndex());
+        int qty = Integer.parseInt(this.txtQty.getText());
+        double price = Double.parseDouble(this.txtPrice.getText());
+        String note = this.txtNote.getText();
+        
+        Room rm = new Room();
+        rm.setDeptID(deptId);
+        rm.setRoomCode(code);
+        rm.setRoomType(type);
+        rm.setQty(qty);
+        rm.setPrice(price);
+        rm.setNote(note);
+        
+        if(this.txtID.getText().equals("New")){
+            if(manager.insert(rm)){
+                Util.infoMsg("ສຳເລັດ!");
+            }
+            else{
+                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+            }
+        }
+        else{
+            if(manager.update(rm)){
+                Util.infoMsg("ສຳເລັດ!");
+            }
+            else{
+                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+            }            
+        }
+        this.dispose();        
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -260,7 +309,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmNewRoom dialog = new FrmNewRoom(new javax.swing.JFrame(), true);
+                FrmNewRoom dialog = new FrmNewRoom(new javax.swing.JFrame(), true,new Room(0,0,"", 1,1, 0, ""));
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -275,8 +324,8 @@ public class FrmNewRoom extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancal;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cmbDept;
+    private javax.swing.JComboBox<String> cmbRoomType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,10 +336,10 @@ public class FrmNewRoom extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtName2;
+    private javax.swing.JTextArea txtNote;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtQty;
     // End of variables declaration//GEN-END:variables
 }

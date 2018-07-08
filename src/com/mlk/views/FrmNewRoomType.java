@@ -6,7 +6,7 @@ import com.mlk.utils.Util;
 import java.awt.Color;
 
 public class FrmNewRoomType extends javax.swing.JDialog {
-
+    RoomTypeManager manager = new RoomTypeManager();
     public FrmNewRoomType(java.awt.Frame parent, boolean modal, RoomType rm_type) {
         super(parent, modal);
         initComponents();
@@ -153,10 +153,9 @@ public class FrmNewRoomType extends javax.swing.JDialog {
         rm_type.setID(Integer.parseInt(this.txtID.getText().trim()));
         rm_type.setName(this.txtName.getText());
         rm_type.setNotes(this.txtNote.getText());
-        
-        RoomTypeManager rmTypeMgr = new RoomTypeManager();
+       
         if(this.txtID.getText().equals("New")){
-            if(rmTypeMgr.insert(rm_type)){
+            if(manager.insert(rm_type)){
                 Util.infoMsg("ສຳເລັດ!");
             }
             else{
@@ -164,7 +163,7 @@ public class FrmNewRoomType extends javax.swing.JDialog {
             }
         }
         else{
-            if(rmTypeMgr.update(rm_type)){
+            if(manager.update(rm_type)){
                 Util.infoMsg("ສຳເລັດ!");
             }
             else{

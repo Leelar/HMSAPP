@@ -7,24 +7,29 @@ package com.mlk.models;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author nnp1
- */
 public class Room {
-    private String roomID;
-    private int roomType;
-    private String deptID;
-    private ArrayList<Bed> bedList ;
 
-    public Room(String rid,int rtype, String did, ArrayList<Bed> blist){
+    private int roomID;
+    private int deptID;
+    private String RoomCode;
+    private int roomType;
+    private int Qty;
+    private double Price;
+    private String Note;
+    
+    public Room() {
+    }
+    public Room(int rid,int deptID,String roomcode, int rtype, int Qty, double Price,String Note) {
         this.roomID = rid;
         this.roomType = rtype;
-        this.deptID = did;
-        this.bedList = blist;
+        this.RoomCode= roomcode;
+        this.Qty=Qty;
+        this.Price=Price;
+        this.Note=Note;
+        this.deptID=deptID;
     }
 
-    public String getRoomID() {
+    public int getRoomID() {
         return roomID;
     }
 
@@ -32,29 +37,53 @@ public class Room {
         return roomType;
     }
 
-    public String getDeptID() {
+    public String getRoomCode() {
+        return RoomCode;
+    }
+
+    public int getQty() {
+        return Qty;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public String getNote() {
+        return Note;
+    }
+
+    public int getDeptID() {
         return deptID;
     }
-    public boolean isFull(){
-        return false;
-    }
-    public ArrayList<Bed> getBedList() {
-        return bedList;
-    }
-    //Setters
-    public void setRoomID(String rid){
-        this.roomID = rid;
+
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
     }
 
     public void setRoomType(int roomType) {
         this.roomType = roomType;
     }
-    public void setDeptID(String deptID) {
+
+    public void setRoomCode(String RoomCode) {
+        this.RoomCode = RoomCode;
+    }
+
+    public void setQty(int Qty) {
+        this.Qty = Qty;
+    }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
+
+    public void setNote(String Note) {
+        this.Note = Note;
+    }
+
+    public void setDeptID(int deptID) {
         this.deptID = deptID;
     }
-    public void setBedList(ArrayList<Bed> bedList) {
-        this.bedList = bedList;
-    }
-    
-    
+
+
 }
