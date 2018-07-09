@@ -57,10 +57,10 @@ public class RoomManager {
         return false;
     }
 
-    public boolean delete(Room rm) {
+    public boolean delete(int id) {
         try {
             Connection c = DatabaseManager.getConnection();
-            String delete = "delete tbl_Room  where RoomID= " + rm.getRoomID() + "";
+            String delete = "delete tbl_Room  where RoomID= " + id + "";
             PreparedStatement p = c.prepareStatement(delete);
             return p.executeUpdate() == 1;
         } catch (Exception e) {
@@ -103,7 +103,7 @@ public class RoomManager {
         } catch (Exception e) {
         }
     }
-    public ArrayList<Integer> configCMB(String tbName, String colId, String colName, JComboBox<String> cmb){
+    public ArrayList<Integer> configCMB(JComboBox<String> cmb, String tbName, String colId, String colName){
         try {
             ArrayList<Integer> array = new ArrayList<>();
             Connection c = DatabaseManager.getConnection();
@@ -119,5 +119,25 @@ public class RoomManager {
         } catch (Exception e) {
         }
         return null;
+    }
+    public Room getRoomObject(int id){
+        try {
+            Connection c = DatabaseManager.getConnection();
+            String query = "Select * from tbl_Room Where RoomID= " + id + "";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            Room rm = new Room();
+            while(rs.next()){
+                rm.setRoomID(rs.getInt("RoomID"));
+                rm.setDeptID(rs.getInt("DeptID"));
+                rm.setRoomCode(rs.getString("RoomCode"));
+                rm.setRoomType(rs.getInt("RTypeID"));
+                rm.setQty(rs.getInt("Qty"));
+                rm.setPrice(rs.getDouble("Price"));
+                rm.setNote(rs.getString("Note"));
+            }
+            return rm;
+        } catch (Exception e) {
+        }
+        return new Room();
     }
 }

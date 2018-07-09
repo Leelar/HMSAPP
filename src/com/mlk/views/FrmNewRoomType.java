@@ -149,8 +149,7 @@ public class FrmNewRoomType extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        RoomType rm_type = new RoomType();
-        rm_type.setID(Integer.parseInt(this.txtID.getText().trim()));
+        RoomType rm_type = new RoomType();        
         rm_type.setName(this.txtName.getText());
         rm_type.setNotes(this.txtNote.getText());
        
@@ -163,6 +162,7 @@ public class FrmNewRoomType extends javax.swing.JDialog {
             }
         }
         else{
+            rm_type.setID(Integer.parseInt(this.txtID.getText().trim()));
             if(manager.update(rm_type)){
                 Util.infoMsg("ສຳເລັດ!");
             }

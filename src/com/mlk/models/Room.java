@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package com.mlk.models;
-
-import java.util.ArrayList;
-
 public class Room {
 
     private int roomID;

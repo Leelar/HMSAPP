@@ -3,6 +3,7 @@ package com.mlk.views;
 import com.mlk.controllers.JTableColumnAutoResize;
 import com.mlk.controllers.RoomManager;
 import com.mlk.models.Room;
+import com.mlk.utils.Util;
 import java.awt.Font; 
 import javax.swing.table.DefaultTableModel;
 public class FrmRooms extends javax.swing.JInternalFrame {
@@ -20,6 +21,10 @@ public class FrmRooms extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popUpMenu = new javax.swing.JPopupMenu();
+        menuCancel = new javax.swing.JMenuItem();
+        menuUpdate = new javax.swing.JMenuItem();
+        menuDelete = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -29,6 +34,30 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+
+        popUpMenu.setComponentPopupMenu(popUpMenu);
+
+        menuCancel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        menuCancel.setText("ຍົກເລີກ");
+        popUpMenu.add(menuCancel);
+
+        menuUpdate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        menuUpdate.setText("ແກ້ໄຂ");
+        menuUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUpdateActionPerformed(evt);
+            }
+        });
+        popUpMenu.add(menuUpdate);
+
+        menuDelete.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        menuDelete.setText("ລົບອອກ");
+        menuDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDeleteActionPerformed(evt);
+            }
+        });
+        popUpMenu.add(menuDelete);
 
         setClosable(true);
         setTitle("Room");
@@ -55,7 +84,13 @@ public class FrmRooms extends javax.swing.JInternalFrame {
             }
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setComponentPopupMenu(popUpMenu);
         jTable1.setRowHeight(30);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(100);
@@ -149,6 +184,34 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         manager.refresh(jTable1, model);
     }//GEN-LAST:event_btnNew3ActionPerformed
 
+    private void menuDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDeleteActionPerformed
+        if(Util.confirmMsg("ທ່ານຕ້ອງການລືບລາຍການນີ້ບໍ?")){
+            int id = Integer.parseInt(this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0).toString().trim());
+            if(manager.delete(id)){
+                Util.infoMsg("ສຳເລັດ!");
+                manager.refresh(jTable1, model);
+            }
+            else{
+                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ");
+                manager.refresh(jTable1, model);
+            }
+        }
+    }//GEN-LAST:event_menuDeleteActionPerformed
+
+    private void menuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUpdateActionPerformed
+        int id = Integer.parseInt(this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0).toString().trim());
+        Room rm = manager.getRoomObject(id);
+        FrmNewRoom newDoctorObject = new FrmNewRoom(null, closable,rm);
+        newDoctorObject.setVisible(true);
+        manager.refresh(jTable1, model);
+    }//GEN-LAST:event_menuUpdateActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if(evt.getClickCount() == 2){
+            this.menuUpdate.doClick();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNew3;
@@ -160,5 +223,9 @@ public class FrmRooms extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem menuCancel;
+    private javax.swing.JMenuItem menuDelete;
+    private javax.swing.JMenuItem menuUpdate;
+    private javax.swing.JPopupMenu popUpMenu;
     // End of variables declaration//GEN-END:variables
 }

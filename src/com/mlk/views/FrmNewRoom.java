@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mlk.views;
 
 import com.mlk.controllers.RoomManager;
@@ -10,25 +5,22 @@ import com.mlk.models.Room;
 import com.mlk.utils.Util;
 import java.awt.Color;
 import java.util.ArrayList;
-
-/**
- *
- * @author kor
- */
+import java.util.HashMap;
 public class FrmNewRoom extends javax.swing.JDialog {
+
     RoomManager manager = new RoomManager();
     ArrayList<Integer> dept_ar;
     ArrayList<Integer> type_ar;
+
     public FrmNewRoom(java.awt.Frame parent, boolean modal, Room rm) {
         super(parent, modal);
         initComponents();
         txtID.setDisabledTextColor(Color.BLACK);
-        dept_ar = manager.configCMB("tbl_Department", "DeptID","DeptName", cmbDept);
-        type_ar = manager.configCMB("tbl_RoomType", "RTypeID","RTypeName", cmbRoomType);
-        if(rm.getRoomID() == 0){
+        dept_ar = manager.configCMB( cmbDept,"tbl_Department", "DeptID", "DeptName");
+        type_ar = manager.configCMB(cmbRoomType, "tbl_RoomType", "RTypeID", "RTypeName");
+        if (rm.getRoomID() == 0) {
             this.txtID.setText("New");
-        }
-        else{
+        } else {
             this.txtID.setText(String.valueOf(rm.getRoomID()).trim());
             this.cmbDept.setSelectedIndex(dept_ar.indexOf(rm.getDeptID()));
             this.txtName.setText(rm.getRoomCode());
@@ -245,7 +237,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         int qty = Integer.parseInt(this.txtQty.getText());
         double price = Double.parseDouble(this.txtPrice.getText());
         String note = this.txtNote.getText();
-        
+
         Room rm = new Room();
         rm.setDeptID(deptId);
         rm.setRoomCode(code);
@@ -253,29 +245,27 @@ public class FrmNewRoom extends javax.swing.JDialog {
         rm.setQty(qty);
         rm.setPrice(price);
         rm.setNote(note);
-        
-        if(this.txtID.getText().equals("New")){
-            if(manager.insert(rm)){
+
+        if (this.txtID.getText().equals("New")) {
+            if (manager.insert(rm)) {
                 Util.infoMsg("ສຳເລັດ!");
+            } else {
+                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
             }
-            else{
+        } else {
+            rm.setRoomID(Integer.parseInt(this.txtID.getText().trim()));
+            if (manager.update(rm)) {
+                Util.infoMsg("ສຳເລັດ!");
+            } else {
                 Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
             }
         }
-        else{
-            if(manager.update(rm)){
-                Util.infoMsg("ສຳເລັດ!");
-            }
-            else{
-                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
-            }            
-        }
-        this.dispose();        
-        
+        this.dispose();
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -309,7 +299,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmNewRoom dialog = new FrmNewRoom(new javax.swing.JFrame(), true,new Room(0,0,"", 1,1, 0, ""));
+                FrmNewRoom dialog = new FrmNewRoom(new javax.swing.JFrame(), true, new Room(0, 0, "", 1, 1, 0, ""));
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -200,10 +200,7 @@ public class FrmRoomType extends javax.swing.JInternalFrame {
     private void menuDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDeleteActionPerformed
         if(Util.confirmMsg("ທ່ານຕ້ອງການລືບລາຍການນີ້ບໍ?")){
             int id = Integer.parseInt(this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(), 0).toString().trim());
-            String name = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(), 1).toString().trim();
-            String note = this.tblRoomType.getValueAt(this.tblRoomType.getSelectedRow(),2).toString().trim();
-            RoomType rt = new RoomType(id, name, note);
-            if(manager.delete(rt)){
+            if(manager.delete(id)){
                 Util.infoMsg("ສຳເລັດ!");
                 manager.refresh(tblRoomType, model);
             }

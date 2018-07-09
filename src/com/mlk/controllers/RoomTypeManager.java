@@ -41,12 +41,11 @@ public class RoomTypeManager {
         }
         return false;
     }
-    public boolean delete(RoomType r_type){
+    public boolean delete(int id){
         try {
             Connection c = DatabaseManager.getConnection();
-            String delete = "Delete tbl_RoomType where RTypeID=?";
+            String delete = "Delete tbl_RoomType where RTypeID="+id+"";
             PreparedStatement p = c.prepareStatement(delete);
-            p.setInt(1, r_type.getID());
             return p.executeUpdate() == 1;
         } catch (Exception e) {
         }
