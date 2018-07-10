@@ -1,30 +1,33 @@
 package com.mlk.views;
 
 import com.mlk.controllers.RoomManager;
+import com.mlk.models.MLKComboBox;
 import com.mlk.models.Room;
 import com.mlk.utils.Util;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.HashMap;
+
 public class FrmNewRoom extends javax.swing.JDialog {
 
     RoomManager manager = new RoomManager();
-    ArrayList<Integer> dept_ar;
-    ArrayList<Integer> type_ar;
 
     public FrmNewRoom(java.awt.Frame parent, boolean modal, Room rm) {
         super(parent, modal);
         initComponents();
         txtID.setDisabledTextColor(Color.BLACK);
-        dept_ar = manager.configCMB( cmbDept,"tbl_Department", "DeptID", "DeptName");
-        type_ar = manager.configCMB(cmbRoomType, "tbl_RoomType", "RTypeID", "RTypeName");
+        MLKComboBox mlk_dept = new MLKComboBox("tbl_Department", "DeptID", "DeptName");
+        MLKComboBox mlk_roomtype = new MLKComboBox("tbl_RoomType", "RTypeID", "RTypeName");
+        manager.setDeptMLKComboBox(mlk_dept);
+        manager.setRoomTypeMLKComboBox(mlk_roomtype);
+        manager.configComboBoxes();
+        cmbDept.setModel(manager.getDeptComboBoxModel());
+        cmbRoomType.setModel(manager.getRoomTypeComboBoxModel());
         if (rm.getRoomID() == 0) {
             this.txtID.setText("New");
         } else {
             this.txtID.setText(String.valueOf(rm.getRoomID()).trim());
-            this.cmbDept.setSelectedIndex(dept_ar.indexOf(rm.getDeptID()));
+            this.cmbDept.setSelectedIndex(manager.getDeptIndexById(rm.getDeptID()));
             this.txtName.setText(rm.getRoomCode());
-            this.cmbRoomType.setSelectedIndex(type_ar.indexOf(rm.getRoomType()));
+            this.cmbRoomType.setSelectedIndex(manager.getRoomTypeIndexById(rm.getRoomType()));
             this.txtQty.setText(String.valueOf(rm.getQty()));
             this.txtPrice.setText(String.valueOf(rm.getPrice()));
             this.txtNote.setText(rm.getNote());
@@ -231,9 +234,9 @@ public class FrmNewRoom extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        int deptId = this.dept_ar.get(this.cmbDept.getSelectedIndex());
+        int deptId = manager.getDeptIdByIndex(this.cmbDept.getSelectedIndex());
         String code = this.txtName.getText();
-        int type = this.dept_ar.get(this.cmbRoomType.getSelectedIndex());
+        int type = manager.getRoomTypeIdByIndex(this.cmbRoomType.getSelectedIndex());
         int qty = Integer.parseInt(this.txtQty.getText());
         double price = Double.parseDouble(this.txtPrice.getText());
         String note = this.txtNote.getText();

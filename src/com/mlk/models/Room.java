@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mlk.models;
+
 public class Room {
 
     private int roomID;
@@ -13,17 +9,18 @@ public class Room {
     private int Qty;
     private double Price;
     private String Note;
-    
+
     public Room() {
     }
-    public Room(int rid,int deptID,String roomcode, int rtype, int Qty, double Price,String Note) {
+
+    public Room(int rid, int deptID, String roomcode, int rtype, int Qty, double Price, String Note) {
         this.roomID = rid;
         this.roomType = rtype;
-        this.RoomCode= roomcode;
-        this.Qty=Qty;
-        this.Price=Price;
-        this.Note=Note;
-        this.deptID=deptID;
+        this.RoomCode = roomcode;
+        this.Qty = Qty;
+        this.Price = Price;
+        this.Note = Note;
+        this.deptID = deptID;
     }
 
     public int getRoomID() {
@@ -81,6 +78,5 @@ public class Room {
     public void setDeptID(int deptID) {
         this.deptID = deptID;
     }
-
 
 }
