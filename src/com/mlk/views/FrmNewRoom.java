@@ -321,6 +321,11 @@ public class FrmNewRoom extends javax.swing.JDialog {
         btnCancal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancal.setName("btnCancel"); // NOI18N
         btnCancal.setPreferredSize(new java.awt.Dimension(73, 26));
+        btnCancal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancalActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnCancal);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -371,11 +376,17 @@ public class FrmNewRoom extends javax.swing.JDialog {
         if(this.txtID.getText().equals("New")){
             Util.infoMsg("ກົດບັນທືກກ່ອນເພີ່ມ");
         }else{
-        Bed b = new Bed(0);
-        b.setRoomID(Integer.parseInt(this.txtID.getText()));            
+            Bed b = new Bed(0);
+            b.setRoomID(Integer.parseInt(this.txtID.getText()));
+            FrmNewBed frm = new FrmNewBed(null, true);
+            frm.setVisible(true);
         }
 
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnCancalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancalActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancalActionPerformed
 
     /**
      * @param args the command line arguments

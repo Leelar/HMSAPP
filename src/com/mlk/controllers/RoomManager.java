@@ -1,5 +1,6 @@
 package com.mlk.controllers;
 
+import com.mlk.models.Bed;
 import com.mlk.models.ComboData;
 import com.mlk.models.MLKComboBox;
 import com.mlk.models.Room;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 
 public class RoomManager {
 
     public MLKComboBox dept_cmb;
     public MLKComboBox roomtype_cmb;
+    private BedManager bmngr = new BedManager();
 
     public RoomManager() {
     }
@@ -39,6 +40,9 @@ public class RoomManager {
             e.printStackTrace();
         }
         return false;
+    }
+    public boolean addBed( Bed b){     
+        return bmngr.insert(b);
     }
 
     public boolean update(Room rm) {
