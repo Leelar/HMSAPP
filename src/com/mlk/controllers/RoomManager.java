@@ -16,7 +16,7 @@ public class RoomManager {
 
     public MLKComboBox dept_cmb;
     public MLKComboBox roomtype_cmb;
-    private BedManager bmngr = new BedManager();
+    private final BedManager bmngr = new BedManager();
 
     public RoomManager() {
     }
@@ -63,6 +63,9 @@ public class RoomManager {
         }
         return false;
     }
+    public boolean updateBed(Bed b){
+        return bmngr.update(b);
+    }
 
     public boolean delete(int id) {
         try {
@@ -74,10 +77,16 @@ public class RoomManager {
         }
         return false;
     }
+    public boolean deleteBed(int id){
+        return bmngr.delete(id);
+    }
 
     public void refresh(JTable table, DefaultTableModel model) {
         this.clear(table, model);
         this.load(model);
+    }
+    public void refreshBed(JTable table, DefaultTableModel model){
+        bmngr.refresh(table, model);
     }
 
     public void clear(JTable table, DefaultTableModel model) {
@@ -241,6 +250,9 @@ public class RoomManager {
             return rm;
         } catch (Exception e) {
         }
-        return new Room();
+        return null;
+    }
+    public Bed getBedObject(int id){
+        return bmngr.getBedObject(id);
     }
 }

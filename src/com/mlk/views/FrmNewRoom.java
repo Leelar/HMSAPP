@@ -7,10 +7,12 @@ import com.mlk.models.Room;
 import com.mlk.utils.Util;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
 
 public class FrmNewRoom extends javax.swing.JDialog {
 
     RoomManager manager = new RoomManager();
+    DefaultTableModel model = new DefaultTableModel();
 
     public FrmNewRoom(java.awt.Frame parent, boolean modal, Room rm) {
         super(parent, modal);
@@ -19,6 +21,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         jTable1.setToolTipText("<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">ຄລິກຂວາເພື່ອແກ້ໄຂ, ລົບລາຍການ</font></p></html>");
         btnAdd.setToolTipText("<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">ກົດເພື່ອເພີ່ມຕຽງໃໝ່<</font></p></html>");
         txtID.setDisabledTextColor(Color.BLACK);
+        model = (DefaultTableModel) jTable1.getModel(); 
         MLKComboBox mlk_dept = new MLKComboBox("tbl_Department", "DeptID", "DeptName");
         MLKComboBox mlk_roomtype = new MLKComboBox("tbl_RoomType", "RTypeID", "RTypeName");
         manager.setDeptMLKComboBox(mlk_dept);
@@ -26,6 +29,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         manager.configComboBoxes();
         cmbDept.setModel(manager.getDeptComboBoxModel());
         cmbRoomType.setModel(manager.getRoomTypeComboBoxModel());
+        manager.refreshBed(jTable1, model);
         if (rm.getRoomID() == 0) {
             this.txtID.setText("New");
         } else {
@@ -379,6 +383,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
             Bed b = new Bed(0);
             b.setRoomID(Integer.parseInt(this.txtID.getText()));
             FrmNewBed frm = new FrmNewBed(null, true);
+            manager.refreshBed(jTable1, model);
             frm.setVisible(true);
         }
 
