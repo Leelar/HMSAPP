@@ -1,8 +1,6 @@
 package com.mlk.controllers;
 
 import com.mlk.models.Bed;
-import com.mlk.models.ComboData;
-import com.mlk.models.MLKComboBox;
 import com.mlk.models.Room;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,14 +9,20 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
+import java.util.Iterator;
 
 public class RoomManager {
 
-    public MLKComboBox dept_cmb;
-    public MLKComboBox roomtype_cmb;
+    private HashMap<Integer, String> dept;
+    private HashMap<Integer, String> roomtype;
     private final BedManager bmngr = new BedManager();
 
     public RoomManager() {
+        dept = new HashMap<>();
+        roomtype = new HashMap<>();
     }
 
     public boolean insert(Room rm) {
@@ -111,9 +115,9 @@ public class RoomManager {
                 String roomType = rs.getString("RTypeName");
                 int qty = rs.getInt("Qty");
                 double price = rs.getDouble("Price");
-                String dept = rs.getString("DeptName");
+                String department = rs.getString("DeptName");
                 String note = rs.getString("Note");
-                model.addRow(new Object[]{id, roomCode, roomType, qty, price, dept, note});
+                model.addRow(new Object[]{id, roomCode, roomType, qty, price, department, note});
             }
             rs.close();
             c.close();
@@ -142,96 +146,70 @@ public class RoomManager {
         }
         return null;
     }
-
-    public void setRoomTypeMLKComboBox(MLKComboBox cmb) {
-        this.roomtype_cmb = cmb;
-    }
-
-    public void setDeptMLKComboBox(MLKComboBox cmb) {
-        this.dept_cmb = cmb;
-    }
-
     public void configComboBoxes() {
         try {
             Connection c1 = DatabaseManager.getConnection();
             String query1 = "Select RTypeID,RTypeName from tbl_RoomType Order by RTypeID ASC";
             ResultSet rs1 = c1.createStatement().executeQuery(query1);
-            ArrayList<ComboData> tmp1 = new ArrayList<>();
             while (rs1.next()) {
-                ComboData data = new ComboData(String.valueOf(rs1.getInt("RTypeID")), rs1.getString("RTypeName"));
-                tmp1.add(data);
+                this.roomtype.put(rs1.getInt("RTypeID"),rs1.getString("RTypeName"));
             }
-            this.roomtype_cmb.setData(tmp1);
             rs1.close();
             c1.close();
 
             Connection c2 = DatabaseManager.getConnection();
             String query2 = "Select DeptID,DeptName from tbl_Department Order by DeptID ASC";
             ResultSet rs2 = c2.createStatement().executeQuery(query2);
-            ArrayList<ComboData> tmp2 = new ArrayList<>();
             while (rs2.next()) {
-                ComboData data = new ComboData(String.valueOf(rs2.getInt("DeptID")), rs2.getString("DeptName"));
-                tmp2.add(data);
+                this.dept.put(rs2.getInt("DeptID"), rs2.getString("DeptName"));
             }
-            this.dept_cmb.setData(tmp2);
             rs2.close();
             c2.close();
         } catch (Exception e) {
         }
     }
-
-    public DefaultComboBoxModel getDeptComboBoxModel() {
+    public DefaultComboBoxModel getComboBoxModel(String tblName, String colId, String colName) {
         try {
             Connection c = DatabaseManager.getConnection();
             DefaultComboBoxModel mode = new DefaultComboBoxModel();
-            ResultSet rs = c.createStatement().executeQuery(this.dept_cmb.getQryString());
+            String query = "Select "+colId+", "+colName + " from "+tblName+" Order by "+colId+" ASC";
+            ResultSet rs = c.createStatement().executeQuery(query);
             while (rs.next()) {
-                mode.addElement(rs.getString(this.dept_cmb.getColName()));
+                mode.addElement(rs.getString(colName));
             }
             return mode;
         } catch (Exception e) {
         }
         return null;
     }
-
-    public DefaultComboBoxModel getRoomTypeComboBoxModel() {
-        try {
-            Connection c = DatabaseManager.getConnection();
-            DefaultComboBoxModel mode = new DefaultComboBoxModel();
-            ResultSet rs = c.createStatement().executeQuery(this.roomtype_cmb.getQryString());
-            while (rs.next()) {
-                mode.addElement(rs.getString(this.roomtype_cmb.getColName()));
-            }
-            return mode;
-        } catch (Exception e) {
-        }
-        return null;
+    public String getDeptValue(int key ){
+        return (String)this.dept.get(key);
     }
-
-    public String getDeptComboBoxValue(int id) {
-        return this.dept_cmb.getValueById(id);
+    public int getDeptID(String value){
+        Set set = this.dept.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+                if(value.equals(mentry.getValue())){
+                    return (int)mentry.getKey();
+                }
+             }
+        return 0;
     }
-
-    public int getDeptIdByIndex(int index) {
-        return this.dept_cmb.getIdByIndex(index);
+    public String getRoomTypeValue(int id ){
+        return (String) this.roomtype.get(id);
     }
-
-    public int getDeptIndexById(int id) {
-        return this.dept_cmb.getIndexById(id);
+    public int getRoomTypeID(String value){
+        Set set = this.roomtype.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+                if(value.equals(mentry.getValue())){
+                    return (int)mentry.getKey();
+                }
+             }
+        return 0;
     }
-
-    public String getRomTypeComboBoxValue(int id) {
-        return this.roomtype_cmb.getValueById(id);
-    }
-
-    public int getRoomTypeIdByIndex(int index) {
-        return this.roomtype_cmb.getIdByIndex(index);
-    }
-
-    public int getRoomTypeIndexById(int id) {
-        return this.roomtype_cmb.getIndexById(id);
-    }
-
     public Room getRoomObject(int id) {
         try {
             Connection c = DatabaseManager.getConnection();

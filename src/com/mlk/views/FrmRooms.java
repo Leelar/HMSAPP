@@ -2,7 +2,6 @@ package com.mlk.views;
 
 import com.mlk.controllers.JTableColumnAutoResize;
 import com.mlk.controllers.RoomManager;
-import com.mlk.models.MLKComboBox;
 import com.mlk.models.Room;
 import com.mlk.utils.Util;
 import java.awt.Font;
@@ -20,10 +19,6 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         JTableColumnAutoResize.resizeColumnWidth(jTable1);
         model = (DefaultTableModel) jTable1.getModel();
         manager.refresh(jTable1, model);
-        MLKComboBox mlk_dept = new MLKComboBox("tbl_Department", "DeptID", "DeptName");
-        MLKComboBox mlk_roomtype = new MLKComboBox("tbl_RoomType", "RTypeID", "RTypeName");
-        manager.setDeptMLKComboBox(mlk_dept);
-        manager.setRoomTypeMLKComboBox(mlk_roomtype);
         manager.configComboBoxes();
     }
 
@@ -230,7 +225,7 @@ public class FrmRooms extends javax.swing.JInternalFrame {
         manager.clear(jTable1, model);
         ArrayList<Room> rooms = manager.searchRoom(this.txtSearch.getText().trim());
         for (Room r : rooms) {
-            model.addRow(new Object[]{r.getRoomID(), r.getRoomCode(), manager.getRomTypeComboBoxValue(r.getRoomType()), r.getQty(), r.getPrice(), manager.getDeptComboBoxValue(r.getDeptID()), r.getNote()});
+            model.addRow(new Object[]{r.getRoomID(), r.getRoomCode(), manager.getRoomTypeValue(r.getRoomType()), r.getQty(), r.getPrice(), manager.getDeptValue(r.getDeptID()), r.getNote()});
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 

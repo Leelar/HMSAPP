@@ -2,7 +2,6 @@ package com.mlk.views;
 
 import com.mlk.controllers.RoomManager;
 import com.mlk.models.Bed;
-import com.mlk.models.MLKComboBox;
 import com.mlk.models.Room;
 import com.mlk.utils.Util;
 import java.awt.Color;
@@ -22,21 +21,17 @@ public class FrmNewRoom extends javax.swing.JDialog {
         btnAdd.setToolTipText("<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">ກົດເພື່ອເພີ່ມຕຽງໃໝ່<</font></p></html>");
         txtID.setDisabledTextColor(Color.BLACK);
         model = (DefaultTableModel) jTable1.getModel(); 
-        MLKComboBox mlk_dept = new MLKComboBox("tbl_Department", "DeptID", "DeptName");
-        MLKComboBox mlk_roomtype = new MLKComboBox("tbl_RoomType", "RTypeID", "RTypeName");
-        manager.setDeptMLKComboBox(mlk_dept);
-        manager.setRoomTypeMLKComboBox(mlk_roomtype);
+        cmbDept.setModel(manager.getComboBoxModel("tbl_Department", "DeptID", "DeptName"));
+        cmbRoomType.setModel(manager.getComboBoxModel("tbl_RoomType", "RTypeID", "RTypeName"));
         manager.configComboBoxes();
-        cmbDept.setModel(manager.getDeptComboBoxModel());
-        cmbRoomType.setModel(manager.getRoomTypeComboBoxModel());
         manager.refreshBed(jTable1, model);
         if (rm.getRoomID() == 0) {
             this.txtID.setText("New");
         } else {
-            this.txtID.setText(String.valueOf(rm.getRoomID()).trim());
-            this.cmbDept.setSelectedIndex(manager.getDeptIndexById(rm.getDeptID()));
+            this.txtID.setText(String.valueOf(rm.getRoomID()));
+            this.cmbDept.setSelectedItem(manager.getDeptValue(rm.getDeptID()));
             this.txtName.setText(rm.getRoomCode());
-            this.cmbRoomType.setSelectedIndex(manager.getRoomTypeIndexById(rm.getRoomType()));
+            this.cmbRoomType.setSelectedItem(String.valueOf(manager.getRoomTypeValue(rm.getRoomID())));
             this.txtQty.setText(String.valueOf(rm.getQty()));
             this.txtPrice.setText(String.valueOf(rm.getPrice()));
             this.txtNote.setText(rm.getNote());
@@ -339,9 +334,9 @@ public class FrmNewRoom extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        int deptId = manager.getDeptIdByIndex(this.cmbDept.getSelectedIndex());
+        int deptId = manager.getDeptID(String.valueOf(this.cmbDept.getSelectedItem()));
         String code = this.txtName.getText();
-        int type = manager.getRoomTypeIdByIndex(this.cmbRoomType.getSelectedIndex());
+        int typeId = manager.getRoomTypeID(String.valueOf(this.cmbRoomType.getSelectedItem()));
         int qty = Integer.parseInt(this.txtQty.getText());
         double price = Double.parseDouble(this.txtPrice.getText());
         String note = this.txtNote.getText();
@@ -349,7 +344,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         Room rm = new Room();
         rm.setDeptID(deptId);
         rm.setRoomCode(code);
-        rm.setRoomType(type);
+        rm.setRoomType(typeId);
         rm.setQty(qty);
         rm.setPrice(price);
         rm.setNote(note);
@@ -380,11 +375,11 @@ public class FrmNewRoom extends javax.swing.JDialog {
         if(this.txtID.getText().equals("New")){
             Util.infoMsg("ກົດບັນທືກກ່ອນເພີ່ມ");
         }else{
-            Bed b = new Bed(0);
+            Bed b = new Bed();
             b.setRoomID(Integer.parseInt(this.txtID.getText()));
-            FrmNewBed frm = new FrmNewBed(null, true);
-            manager.refreshBed(jTable1, model);
+            FrmNewBed frm = new FrmNewBed(null, true,b);
             frm.setVisible(true);
+            manager.refreshBed(jTable1, model);
         }
 
     }//GEN-LAST:event_btnAddActionPerformed

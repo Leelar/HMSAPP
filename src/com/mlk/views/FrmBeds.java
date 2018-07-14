@@ -1,6 +1,7 @@
 
 package com.mlk.views;
 import com.mlk.controllers.JTableColumnAutoResize;
+import com.mlk.models.Bed;
 import java.awt.Font; 
 import com.mlk.views.FrmNewProvinces;
 public class FrmBeds extends javax.swing.JInternalFrame {
@@ -138,7 +139,7 @@ public class FrmBeds extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNew3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew3ActionPerformed
-        FrmNewBed newDoctorObject = new FrmNewBed(null, closable);
+        FrmNewBed newDoctorObject = new FrmNewBed(null, closable, new Bed(0));
         newDoctorObject.setVisible(true);
     }//GEN-LAST:event_btnNew3ActionPerformed
 
