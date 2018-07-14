@@ -32,7 +32,8 @@ public class RoomManager {
             int maxID = gm.getIntMaxID("tbl_Room", "RoomID");
             String insert = "insert into tbl_Room(RoomID, DeptID, RoomCode, RTypeID, Qty, Price, Note)values(?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(insert);
-            p.setInt(1, maxID);
+            rm.setRoomID(maxID);
+            p.setInt(1, rm.getRoomID());
             p.setInt(2, rm.getDeptID());
             p.setString(3, rm.getRoomCode());
             p.setInt(4, rm.getRoomType());
@@ -92,7 +93,9 @@ public class RoomManager {
     public void refreshBed(JTable table, DefaultTableModel model){
         bmngr.refresh(table, model);
     }
-
+    public void refreshBed(JTable table, DefaultTableModel model, int room_id){
+        bmngr.refresh(table, model,room_id);
+    }
     public void clear(JTable table, DefaultTableModel model) {
         int index = table.getRowCount() - 1;
         while (index > -1) {

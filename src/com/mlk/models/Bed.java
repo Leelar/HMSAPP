@@ -25,7 +25,12 @@ public class Bed {
         this.roomID = rid;
         this.note = note;
     }
-
+    public Bed(int bid, int rid, String bCode,boolean isOccupied, String note){
+        this.bedID = bid;
+        this.occupied = isOccupied;
+        this.roomID = rid;
+        this.note = note;
+    }
     public int getBedID() {
         return bedID;
     }
@@ -66,15 +71,15 @@ public class Bed {
         this.note = note;
     }
   
-    private void setOccupied(boolean bedStatus) {
+    public void setIsOccupied(boolean bedStatus) {
         this.occupied = bedStatus;
     }
     public void setOccupied(){
-        this.setOccupied(true);
+        this.setIsOccupied(true);
         noOfBedOccupied++;
     }
     public void setReleased(){
-        this.setOccupied(false);
+        this.setIsOccupied(false);
         noOfBedOccupied--;
     }    
     

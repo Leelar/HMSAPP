@@ -24,14 +24,15 @@ public class FrmNewRoom extends javax.swing.JDialog {
         cmbDept.setModel(manager.getComboBoxModel("tbl_Department", "DeptID", "DeptName"));
         cmbRoomType.setModel(manager.getComboBoxModel("tbl_RoomType", "RTypeID", "RTypeName"));
         manager.configComboBoxes();
-        manager.refreshBed(jTable1, model);
+        
         if (rm.getRoomID() == 0) {
             this.txtID.setText("New");
         } else {
             this.txtID.setText(String.valueOf(rm.getRoomID()));
+            manager.refreshBed(jTable1, model, rm.getRoomID());
             this.cmbDept.setSelectedItem(manager.getDeptValue(rm.getDeptID()));
             this.txtName.setText(rm.getRoomCode());
-            this.cmbRoomType.setSelectedItem(String.valueOf(manager.getRoomTypeValue(rm.getRoomID())));
+            this.cmbRoomType.setSelectedItem(String.valueOf(manager.getRoomTypeValue(rm.getRoomType())));
             this.txtQty.setText(String.valueOf(rm.getQty()));
             this.txtPrice.setText(String.valueOf(rm.getPrice()));
             this.txtNote.setText(rm.getNote());
@@ -152,7 +153,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,7 +191,9 @@ public class FrmNewRoom extends javax.swing.JDialog {
         jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
@@ -348,22 +351,26 @@ public class FrmNewRoom extends javax.swing.JDialog {
         rm.setQty(qty);
         rm.setPrice(price);
         rm.setNote(note);
-
-        if (this.txtID.getText().equals("New")) {
-            if (manager.insert(rm)) {
-                Util.infoMsg("ສຳເລັດ!");
-            } else {
-                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
-            }
-        } else {
-            rm.setRoomID(Integer.parseInt(this.txtID.getText().trim()));
-            if (manager.update(rm)) {
-                Util.infoMsg("ສຳເລັດ!");
-            } else {
-                Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
-            }
+        if(this.txtName.getText().equals("") || this.txtPrice.getText().equals("")){
+            Util.warningMsg("ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ");
         }
-        this.dispose();
+        else{
+            if (this.txtID.getText().equals("New")) {
+                if (manager.insert(rm)) {
+                    Util.infoMsg("ສຳເລັດ!");
+                    this.txtID.setText(String.valueOf(rm.getRoomID()));
+                } else {
+                    Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+                }
+            } else {
+                rm.setRoomID(Integer.parseInt(this.txtID.getText().trim()));
+                if (manager.update(rm)) {
+                    Util.infoMsg("ສຳເລັດ!");
+                } else {
+                    Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+                }
+            }            
+        }
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -375,7 +382,7 @@ public class FrmNewRoom extends javax.swing.JDialog {
         if(this.txtID.getText().equals("New")){
             Util.infoMsg("ກົດບັນທືກກ່ອນເພີ່ມ");
         }else{
-            Bed b = new Bed();
+            Bed b = new Bed(0);
             b.setRoomID(Integer.parseInt(this.txtID.getText()));
             FrmNewBed frm = new FrmNewBed(null, true,b);
             frm.setVisible(true);

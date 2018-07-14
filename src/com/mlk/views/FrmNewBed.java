@@ -7,6 +7,7 @@ package com.mlk.views;
 
 import com.mlk.controllers.BedManager;
 import com.mlk.models.Bed;
+import com.mlk.utils.Util;
 import java.awt.Color;
 
 /**
@@ -19,12 +20,18 @@ public class FrmNewBed extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         txtID.setDisabledTextColor(Color.BLACK);
+        cmbRoom.setModel(manager.getComboBoxModel("tbl_Room", "RoomID", "RoomCode"));
+        manager.configComboBoxes();
         if(b.getBedID() == 0){
             this.txtID.setText("New");
+            this.cmbRoom.setSelectedItem(manager.getRoomValue(b.getRoomID()));
         }
         else{
             this.txtID.setText(String.valueOf(b.getBedID()));
-            this.cmbRoom.setSelectedIndex(WIDTH);
+            this.cmbRoom.setSelectedItem(manager.getRoomValue(b.getRoomID()));
+            this.txtName.setText(b.getBedCode());
+            this.cbOccupied.setSelected(b.isOccupied());
+            this.txtNote.setText(b.getNote());
         }
     }
 
@@ -43,10 +50,10 @@ public class FrmNewBed extends javax.swing.JDialog {
         txtID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtNote = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbOccupied = new javax.swing.JCheckBox();
         cmbRoom = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -79,9 +86,9 @@ public class FrmNewBed extends javax.swing.JDialog {
 
         txtName.setName("txtName"); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtNote.setColumns(20);
+        txtNote.setRows(5);
+        jScrollPane2.setViewportView(txtNote);
 
         jLabel3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -116,7 +123,7 @@ public class FrmNewBed extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1)
+                        .addComponent(cbOccupied)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -149,7 +156,7 @@ public class FrmNewBed extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(cbOccupied))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +164,7 @@ public class FrmNewBed extends javax.swing.JDialog {
                 .addGap(38, 38, 38))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbRoom, jCheckBox1, jLabel2, jLabel4, txtName});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbOccupied, cmbRoom, jLabel2, jLabel4, txtName});
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -182,6 +189,11 @@ public class FrmNewBed extends javax.swing.JDialog {
         btnCancal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancal.setName("btnCancel"); // NOI18N
         btnCancal.setPreferredSize(new java.awt.Dimension(73, 26));
+        btnCancal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancalActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnCancal);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -191,12 +203,44 @@ public class FrmNewBed extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        int roomId = manager.getRoomID(String.valueOf(this.cmbRoom.getSelectedItem()));
+        String bedCode = this.txtName.getText();
+        boolean isOccupied = this.cbOccupied.isSelected();
+        String note = this.txtNote.getText();
+        Bed b = new Bed();
+        b.setRoomID(roomId);
+        b.setBedCode(bedCode);
+        b.setIsOccupied(isOccupied);
+        b.setNote(note);
+        if(this.txtName.getText().equals("")){
+            Util.warningMsg("ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ");
+        }
+        else{
+            if (this.txtID.getText().equals("New")) {
+                if (manager.insert(b)) {
+                    Util.infoMsg("ສຳເລັດ!");
+                    this.txtID.setText(String.valueOf(b.getBedID()));
+                } else {
+                    Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+                }
+            } else {
+                b.setBedID(Integer.parseInt(this.txtID.getText().trim()));
+                if (manager.update(b)) {
+                    Util.infoMsg("ສຳເລັດ!");
+                } else {
+                    Util.warningMsg("ເກີດຂໍ້ຜິດພາດ!");
+                }
+            }            
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnCancalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancalActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,8 +290,8 @@ public class FrmNewBed extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancal;
     private javax.swing.JButton btnSave;
+    private javax.swing.JCheckBox cbOccupied;
     private javax.swing.JComboBox cmbRoom;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -256,8 +300,8 @@ public class FrmNewBed extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextArea txtNote;
     // End of variables declaration//GEN-END:variables
 }

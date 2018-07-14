@@ -9,12 +9,18 @@ import com.mlk.models.Bed;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class BedManager {
+    private HashMap<Integer, String> room;
     public BedManager(){
-        
+        room = new HashMap<>();
     }
     public boolean insert(Bed b){
         try {
@@ -64,7 +70,10 @@ public class BedManager {
         this.clear(table, model);
         this.load(model);
     }
-
+    public void refresh(JTable table, DefaultTableModel model, int room_id) {
+        this.clear(table, model);
+        this.load(model,room_id);
+    }
     public void clear(JTable table, DefaultTableModel model) {
         int index = table.getRowCount() - 1;
         while (index > -1) {
@@ -89,6 +98,64 @@ public class BedManager {
             c.close();
         } catch (Exception e) {
         }
+    }
+    public void load(DefaultTableModel model,int room_id) {
+        try {
+            Connection c = DatabaseManager.getConnection();
+            String query = "SELECT Reserved, BedID, BedCode, Note FROM tbl_Bed WHERE RoomID ="+room_id+"";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while (rs.next()) {
+                boolean reserved = rs.getBoolean("Reserved");
+                int bId = rs.getInt("BedID");
+                String bCode = rs.getString("BedCode");
+                String Note = rs.getString("Note");
+                model.addRow(new Object[]{reserved, bId, bCode, Note});
+            }
+            rs.close();
+            c.close();
+        } catch (Exception e) {
+        }
+    }
+    public void configComboBoxes() {
+        try {
+            Connection c1 = DatabaseManager.getConnection();
+            String query1 = "Select RoomID,RoomCode from tbl_Room Order by RoomID ASC";
+            ResultSet rs1 = c1.createStatement().executeQuery(query1);
+            while (rs1.next()) {
+                this.room.put(rs1.getInt("RoomID"),rs1.getString("RoomCode"));
+            }
+            rs1.close();
+            c1.close();
+        } catch (Exception e) {
+        }
+    }
+    public DefaultComboBoxModel getComboBoxModel(String tblName, String colId, String colName) {
+        try {
+            Connection c = DatabaseManager.getConnection();
+            DefaultComboBoxModel mode = new DefaultComboBoxModel();
+            String query = "Select "+colId+", "+colName + " from "+tblName+" Order by "+colId+" ASC";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while (rs.next()) {
+                mode.addElement(rs.getString(colName));
+            }
+            return mode;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public String getRoomValue(int key ){
+        return (String)this.room.get(key);
+    }
+    public int getRoomID(String value){
+        Set set = this.room.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+                if(value.equals(mentry.getValue())){
+                    return (int)mentry.getKey();
+                }
+        }
+        return 0;
     }
     public Bed getBedObject(int id) {
         try {
